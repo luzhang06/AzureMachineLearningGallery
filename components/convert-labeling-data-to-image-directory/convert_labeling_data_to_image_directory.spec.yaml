@@ -1,0 +1,24 @@
+amlModuleIdentifier:
+  moduleName: Convert Labeling Data to Image Directory
+  moduleVersion: 0.0.2
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependenciesFile: conda.yaml
+    args:
+    - --labeling_data
+    - inputPath: Labeling data
+    - --output_image_dir
+    - outputPath: Output image directory
+    command:
+    - python
+    - convert_labeling_data_to_image_directory.py
+inputs:
+- name: Labeling data
+  type: AzureMLDataset
+  argumentName: labeling_data
+outputs:
+- name: Output image directory
+  type: ImageDirectory
+  argumentName: output_image_dir

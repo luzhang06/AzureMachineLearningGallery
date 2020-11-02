@@ -1,0 +1,13 @@
+name: SGT_module_environment
+channels:
+- defaults
+dependencies:
+- python=3.7
+- pip:
+  - PyYAML
+  - azureml-designer-core==0.0.26.*
+  - joblib==0.14.0
+  - pyarrow
+  - sgt==1.0.0
+  - azureml-defaults
+  - azureml-dataprep[pandas,fuse] 

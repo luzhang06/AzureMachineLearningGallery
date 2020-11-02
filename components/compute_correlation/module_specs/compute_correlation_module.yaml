@@ -1,0 +1,39 @@
+amlModuleIdentifier:
+  namespace: css
+  moduleName: Compute Correlation
+  description: Compute correlation matrix of pairwise columns in dataset.
+  moduleVersion: 0.0.1
+description: Compute correlation matrix of pairwise columns in dataset using kendall, spearman, pearson methods
+isdeterministric: true
+metadata:
+  annotations:
+    tags:
+    - statistical Functions
+    sourceCode: https://github.com/azure/amlmodules
+    contact: Yassine khelifi <yassinek@microsoft.com>
+inputs:
+- name: Input dataset
+  type: DataFrameDirectory
+  port: true
+- name: Correlation method
+  type: Mode
+  default: pearson
+  options:
+  - pearson
+  - kendall
+  - spearman
+outputs:
+- name: Results dataset
+  type: DataFrameDirectory
+  port: true
+implementation:
+  container:
+    conda: corr_conda.yaml
+    image: mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+    additionalIncludes: 
+      - ../correlation_module.py
+    command: [python, correlation_module.py] 
+    args: [
+        --input-dir, {inputPath: Input dataset},
+        --correlation-method, {inputValue: Correlation method},
+        --output-dir, {outputPath: Results dataset}] 

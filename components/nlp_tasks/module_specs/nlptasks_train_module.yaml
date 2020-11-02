@@ -1,0 +1,301 @@
+amlModuleIdentifier:
+  namespace: css
+  moduleName: Train NLP Tasks
+  description: Finetune NLP downstream tasks using transformers
+  moduleVersion: 0.0.1
+description: Finetune NLP downstream tasks using transformers
+isdeterministric: true
+metadata:
+  annotations:
+    tags:
+    - NLP
+    - Transformers
+    - Deep Learning
+    - bert
+    sourceCode: https://github.com/azure/amlmodules
+    contact: Yassine khelifi <yassinek@microsoft.com>
+inputs:
+- name: Training dataset
+  type: DataFrameDirectory
+  port: true
+- name: Evaluation dataset
+  type: DataFrameDirectory
+  port: true
+- name: Text column
+  type: String
+  description: Select column containing text corpora
+- name: Label column
+  type: String
+  description: Select column containing label to predict
+- name: Task
+  type: Mode 
+  description: Specify the NLP task.
+  default: multi-class_classification
+  options:
+  - binary_classification
+  - multi-class_classification
+  - regression
+- name: Pretrained model
+  type: Mode 
+  description: Specify the transformers pretrained model.
+  default: bert
+  options:
+  - bert:
+    - name: bert model name
+      type: Mode
+      optional: true
+      options:
+      - bert-base-uncased
+      - bert-large-uncased
+      - bert-base-cased
+      - bert-large-cased
+      - bert-base-multilingual-uncased
+      - bert-base-multilingual-cased
+      - bert-base-chinese
+      - bert-base-german-cased
+      - bert-large-uncased-whole-word-masking
+      - bert-large-cased-whole-word-masking
+      - bert-large-uncased-whole-word-masking-finetuned-squad
+      - bert-large-cased-whole-word-masking-finetuned-squad
+      - bert-base-german-dbmdz-cased
+      - bert-base-german-dbmdz-uncased
+      - bert-base-finnish-cased-v1
+      - bert-base-finnish-uncased-v1
+      - bert-base-dutch-cased'
+  - xlnet:
+    - name: xlnet model name
+      type: Mode
+      optional: true
+      options:
+      - xlnet-base-cased
+      - xlnet-large-cased
+  - xlm:
+    - name: xlm model name
+      type: Mode
+      optional: true
+      options:
+      - xlm-mlm-en-2048
+      - xlm-mlm-ende-1024
+      - xlm-mlm-enfr-1024
+      - xlm-mlm-enro-1024
+      - xlm-mlm-xnli15-1024
+  - roberta: 
+    - name: roberta model name
+      type: Mode
+      optional: true
+      options:
+      - roberta-base
+      - roberta-large
+      - distilroberta-base
+  - albert:
+     - name: albert model name
+       type: Mode
+       optional: true
+       options:
+       - albert-base-v1
+       - albert-large-v1
+       - albert-base-v2
+       - albert-large-v2
+  - camembert:
+     - name: camembert model name
+       type: Mode
+       optional: true
+       options:
+       - camembert-base
+  - xlmroberta:
+    - name: xlmroberta model name
+      type: Mode
+      optional: true
+      options:
+      - xlm-roberta-base
+      - xlm-roberta-large
+  - flaubert:
+    - name: flaubert model name
+      type: Mode
+      optional: true
+      options:
+      - flaubert-small-cased
+      - flaubert-base-uncased
+      - flaubert-base-cased
+      - flaubert-large-cased
+  - distilbert:
+    - name: distilbert model name
+      type: Mode
+      optional: true
+      options:
+      - distilbert-base-uncased
+      - distilbert-base-uncased-distilled-squad
+      - distilbert-base-cased
+      - distilbert-base-cased-distilled-squad
+      - distilbert-base-german-cased
+      - distilbert-base-multilingual-cased
+  - electra:
+    - name: electra model name
+      type: Mode
+      optional: true
+      options:
+      - google/electra-base-discriminator
+      - google/electra-small-discriminator
+      - google/electra-large-discriminator
+- name: Lower case
+  type: Bool
+  description: Set to True when using uncased models.
+  default: False
+  optional: true
+- name: Max sequence length
+  type: Integer
+  description: Maximum sequence length the model will support.
+  default: 128
+- name: Seed
+  type: Integer
+  description: Reproducibility seed.
+- name: Number of GPU's
+  type: Integer
+  description: Number of GPU's to use.
+  optional: true
+  default: 1
+- name: Number of training epochs
+  type: Integer
+  description: The number of epochs the model will be trained for.
+  default: 1
+- name: Training batch size
+  type: Integer
+  description: The training batch size.
+  default: 8
+- name: Evaluation batch size
+  type: Integer
+  description: The evaluation batch size.
+  default: 8
+- name: Learning rate
+  type: Float
+  description: The learning rate for training.
+  default: 4e-5
+- name: Warmup steps
+  type: Integer
+  description: >
+    Number of training steps where learning rate will "warm up". Overrides Warmup ratio.
+  default: 0
+  optional: true
+- name: Warmup ratio
+  type: Float
+  description: >
+    Ratio of total training steps where learning rate will "warm up". Overridden if warmup_steps is specified.
+  default: 0.06
+  optional: true
+- name: Adam epsilon
+  type: Float
+  description: Epsilon hyperparameter used in AdamOptimizer.
+  optional: true
+  default: 1e-8
+- name: Weight decay
+  type: Integer
+  description: Adds L2 penalty.
+  default: 0
+  optional: true
+- name: Gradient accumulation steps
+  type: Integer
+  description: >
+    The number of training steps to execute before performing a optimizer.step(). 
+    Effectively increases the training batch size while sacrificing training time to lower memory consumption.
+  default: 1
+  optional: true
+- name: Maximum gradient clipping
+  type: Float
+  description: Maximum gradient clipping.
+  default: 1.0
+  optional: true
+
+outputs:
+- name: Output dataset
+  type: DataFrameDirectory
+  port: true
+- name: Metrics dataset
+  type: DataFrameDirectory
+  port: true
+- name: Tensorboard logs
+  type: AnyDirectory
+  port: true
+- name: Trained model
+  type: ModelDirectory
+  port: true
+implementation:
+  container:
+    conda: nlptasks_conda.yaml
+    image: mcr.microsoft.com/azureml/base-gpu:intelmpi2018.3-cuda10.0-cudnn7-ubuntu16.04
+    additionalIncludes: 
+      - ../tasks.py
+      - ../args.py
+      - ../__init__.py
+      - ../train_nlptasks.py
+    command: [python, train_nlptasks.py]  
+    args: 
+    - --train-dir
+    - inputPath: Training dataset
+    - --eval-dir
+    - inputPath: Evaluation dataset
+    - --output-dir
+    - outputPath: Output dataset
+    - --metrics-output-dir
+    - outputPath: Metrics dataset
+    - --model-output-dir
+    - outputPath: Trained model
+    - --tb-logs
+    - outputPath: Tensorboard logs
+    - --text-column
+    - inputValue: Text column
+    - --label-column
+    - inputValue: Label column
+    - --task
+    - inputValue: Task
+    - --seed
+    - inputValue: Seed
+    - --n-gpu
+    - inputValue: Number of GPU's
+    - --model-type
+    - inputValue: Pretrained model
+    - - --bert-model-name
+      - inputValue: bert model name
+    - - --xlnet-model-name
+      - inputValue: xlnet model name
+    - - --xlm-model-name
+      - inputValue: xlm model name
+    - - --roberta-model-name
+      - inputValue: roberta model name
+    - - --albert-model-name
+      - inputValue: albert model name
+    - - --camembert-model-name
+      - inputValue: camembert model name
+    - - --xlmroberta-model-name
+      - inputValue: xlmroberta model name
+    - - --flaubert-model-name
+      - inputValue: flaubert model name
+    - - --distilbert-model-name
+      - inputValue: distilbert model name
+    - - --electra-model-name
+      - inputValue: electra model name
+    - --max-seq-length
+    - inputValue: Max sequence length
+    - --num-train-epochs
+    - inputValue: Number of training epochs
+    - --train-batch-size
+    - inputValue: Training batch size
+    - --eval-batch-size
+    - inputValue: Evaluation batch size
+    - --learning-rate
+    - inputValue: Learning rate
+    - --epsilon-adam
+    - inputValue: Adam epsilon
+    - --warmup-steps
+    - inputValue: Warmup steps
+    - --warmup-ratio
+    - inputValue: Warmup ratio
+    - --weight-decay
+    - inputValue: Weight decay
+    - --gradient-accumulation-steps
+    - inputValue: Gradient accumulation steps
+    - --max-grad-norm
+    - inputValue: Maximum gradient clipping
+    - --do-lower-case
+    - inputValue: Lower case
+
+  
