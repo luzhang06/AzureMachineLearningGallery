@@ -1,0 +1,35 @@
+amlModuleIdentifier:
+  namespace: css
+  moduleName: Detect Languages
+  description: Detect languages on text columns in a dataset.
+  moduleVersion: 0.0.1
+description: Detect languages on text columns in a dataset.
+isdeterministric: true
+metadata:
+  annotations:
+    tags:
+    - Text Analytics
+    sourceCode: https://github.com/azure/amlmodules
+    contact: Yassine khelifi <yassinek@microsoft.com>
+inputs:
+- name: Input dataset
+  type: DataFrameDirectory
+  port: true
+- name: Target columns
+  description: Comma sperated column names
+  type: String
+outputs:
+- name: Results dataset
+  type: DataFrameDirectory
+  port: true
+implementation:
+  container:
+    conda: languages_conda.yaml
+    image: mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+    additionalIncludes: 
+      - ../detect_languages_module.py
+    command: [python, detect_languages_module.py] 
+    args: [
+        --input-dir, {inputPath: Input dataset},
+        --target-column, {inputValue: Target columns},
+        --output-dir, {outputPath: Results dataset}] 

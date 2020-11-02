@@ -1,0 +1,10 @@
+channels:
+- defaults
+dependencies:
+- python=3.6.5
+- pip:
+  - azureml-contrib-dataset
+  - azureml-dataset-runtime==1.15.0
+  - azureml-designer-core[image]==0.0.41
+  - fire
+name: project_environment
