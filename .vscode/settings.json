@@ -1,0 +1,8 @@
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/mengxhy/aml-cm-schema/master/mergedschema.json": [
+            "components/convert-labeling-data-to-image-directory/convert_labeling_data_to_image_directory.spec.yaml"
+        ]
+    },
+    "python.dataScience.jupyterServerURI": "local"
+}

@@ -8,6 +8,10 @@ In this gallery, you can easily find a machine learning pipeline/component which
 * [Pipelines](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
 * [Components](/components/README.md) - a catalog of components which can be reused in different pipelines
 
+
+## Toturial
+- Toturial 1: Using existing component
+- Toturial 2: Create your own component
 ## Get Involved
 Please email us: stcamlstudio@microsoft.com
 
