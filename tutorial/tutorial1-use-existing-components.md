@@ -1,6 +1,6 @@
 # Tutorial-1 Use existing components from gallery
 
-A component is self-contained set of code that performs one step in the ML workflow (pipeline), such as data preprocessing, model training, model scoring and so on. A component is analogous to a function, in that it has a name, parameters, expects certain input and returns some value.
+A component is self-contained set of code that performs one step in the ML workflow (pipeline), such as data preprocessing, model training, model scoring and so on. A component is analogous to a function, in that it has a name, parameters, expects certain input and returns some value. Any python script can be wrapped as a component following the [component spec](component-spec-definition.md).
 
 Azure Machine Learning Gallery contains rich components and pipelines for common machine learning tasks. It accelerates the productivity by enabling customer easily leveraging best work of the community instead of start from zero. 
 
@@ -18,8 +18,8 @@ This tutorial will explain how to register component from the gallery with 3 dum
 1. Click *Create new component -> From YAML file*. Chose Github repo as source. Fill in the URL of component YAML spec file. 
 
     ![create-component](./create-component.PNG)
+    
 
-    [to do]add some explaination on the latest yaml
 1. Follow the wizard to finish the creation. After creation you will see the component both in component tab and Designer palette on the left. 
 1. Repeat 1-4 for score.yaml and evaluate.yaml to register score and evaluate component to your workspace.
 
