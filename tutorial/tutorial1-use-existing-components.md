@@ -17,13 +17,15 @@ This tutorial will explain how to register component from the gallery with 3 sam
 
 1. Go to ml.azure.com and select your workspace.
 1. Add flight=cm at end of the URL to enable components feature. You will see Components tab under Assests blade on the left navigation area. 
-1. Click *Create new component -> From YAML file*. Chose Github repo as source. Fill in the URL of component YAML spec file. 
+
+    [Note] Please open designer before you do following steps if you never opened designer in your workspace before. This is to make sure the needed data type is registered to the workspace. 
+1. Click *Create new component -> From YAML file*. Chose Github repo as source. Fill in the URL of cleanse component YAML spec file (https://github.com/Azure/AzureMachineLearningGallery/blob/main/components/nyc-taxi-fare-prediction/cleanse/cleanse_spec.yaml).
 
     ![create-component](./create-component.PNG)
     
 
 1. Follow the wizard to finish the creation. After creation you will see the component both in component tab and Designer palette on the left. 
-1. Repeat 1-4 for score.yaml and evaluate.yaml to register score and evaluate component to your workspace. Check the left palette in designer, you should be able to see the registered components there.
+1. Repeat 1-4 for merge_spec.yaml to register Merge Taxi Data and Train XGBoost Model component to your workspace. Check the left palette in designer, you should be able to see the registered components there.
 ![registered-component](./module-tree.PNG)
 
 
@@ -31,11 +33,28 @@ This tutorial will explain how to register component from the gallery with 3 sam
 
 Azure Machine Learning designer is the UI interface to build machine learning pipelines. It provides an easy to use drag-n-drop interface to build, test and manage your machine learning pipelines. 
 
-1. Create a dataset that will be used in the pipeline
-1. Drag and drop the components and dataset.
+1. Create NYC Taxi dataset that will be used in the pipeline
+
+    We will use Azure open datasets to create the NYC Taxi data. In ml.studio.com, go to Datasets -> Create datasets -> From Open Datasets. Choose NYC taxi data. We will register the data of Jan 2017 for this tutorial. Remember to register both green taxi trip records and yellow taxi trip records.
+    ![register-dataset](./register-nyctaxi-datasets.PNG) 
+1. Drag and drop the components and dataset. You can right click the dataset and click **Visualize** to preview the data.
 1. Connect them to build the pipeline. 
-1. Submit a run to compute target.
-1. Check result of the pipeline.
+
+    The Clean Taxi Data component has two parameters. ```useful_columns``` is a list of columns that will be picked for following processing. ```columns``` is the column rename mapping dictionary. Since the nyc-taxi-yellow and nyc-taxi-green data have different column names, we need to rename the columns to unified names. ```columns``` captures the original column names and the unified new names that used in ```useful_columns```
+    ![clean-parameter](./clean-parameters.PNG)
+
+1. Submit a run.
+    
+    Select a compute target and submit a run. 
+
+1. Check result of the run.
+    
+    If the run finish successfully, each component's output will be stored in the workspace default blob. 
+    You can preview the output by **Visualize** or access the output in storage account by **View Output** in the right click menu of the component.
+
+     If the run failed, check the 70_driver_log under Outputs + Logs to troubleshot. 
+  
+
 
 
 
