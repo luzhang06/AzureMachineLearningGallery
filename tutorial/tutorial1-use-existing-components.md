@@ -8,10 +8,12 @@ In this tutorial you will learn how to build a machine learning pipeline with ex
  1. Register the components to your Azure Machine Learning workspace.
  2. Build the pipeline using the registered components in Azure Machine Learning designer.
 
+This tutorial will use NYC Taxi Fare Prediction as an example. The related components can be found under components/nyc-taxi-fare-prediction.
+
 
 ## 1. Register existing components from gallery
 
-This tutorial will explain how to register component from the gallery with 3 dump components under folder components/get-started.
+This tutorial will explain how to register component from the gallery with 3 sample components (cleanse, merge, filter) under folder components/nyc-taxi-fare-prediction.
 
 1. Go to ml.azure.com and select your workspace.
 1. Add flight=cm at end of the URL to enable components feature. You will see Components tab under Assests blade on the left navigation area. 
@@ -21,7 +23,8 @@ This tutorial will explain how to register component from the gallery with 3 dum
     
 
 1. Follow the wizard to finish the creation. After creation you will see the component both in component tab and Designer palette on the left. 
-1. Repeat 1-4 for score.yaml and evaluate.yaml to register score and evaluate component to your workspace.
+1. Repeat 1-4 for score.yaml and evaluate.yaml to register score and evaluate component to your workspace. Check the left palette in designer, you should be able to see the registered components there.
+![registered-component](./module-tree.PNG)
 
 
 ## 2. Use registered component to build pipeline in designer
