@@ -7,9 +7,7 @@ dependencies:
 - pytorch=1.5.0
 - torchvision=0.6.0
 - pip:
-  - azureml-defaults==0.1.0.*
-  - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F 
-  - --extra-index-url https://pypi.org/simple
+  - azureml-defaults
   - pandas==0.25.3
   - numpy==1.18.1
   - pyarrow==0.16.0

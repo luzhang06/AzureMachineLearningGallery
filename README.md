@@ -24,7 +24,11 @@ A component specification in YAML format describes the component in the Azure Ma
 
 Refer to [component spec definition](./component-spec-definition.md) for more details. 
 
+### Vote for more components
 
+You can vote for your wanted components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
+
+You can either vote for existing ideas or post your new idea in the Microsoft Azure Machine Learning channel.
 
 ## Quick Links
 * [Pipelines list](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
@@ -34,6 +38,8 @@ Refer to [component spec definition](./component-spec-definition.md) for more de
 ## Tutorial
 - [Tutorial 1: Use existing component from gallery](./tutorial/tutorial1-use-existing-components.md)
 - Toturial 2: Create your own component
+ 
+
 ## Get Involved
 Please email us: stcamlstudio@microsoft.com
 
