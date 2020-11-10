@@ -4,6 +4,7 @@ Azure Machine Learning Gallery enables our growing community of developers and d
 
 In this gallery, you can easily find a machine learning pipeline/component which is similar to the problem you are trying to solve, rather than starting from scratch.
 
+<<<<<<< HEAD
 ## What is pipeline and component 
 
 An Azure Machine Learning pipeline is an independently executable workflow of a complete machine learning task. Azure Machine Learning pipelines help you build, optimize, and manage machine learning workflows with simplicity, repeatability and quality assurance.
@@ -29,10 +30,12 @@ Refer to [component spec definition](./component-spec-definition.md) for more de
 You can vote for your wanted components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
 
 You can either vote for existing ideas or post your new idea in the Microsoft Azure Machine Learning channel.
+=======
+>>>>>>> a36ba0cfe25f36af8a3a407d0bb2a674b00d26dc
 
 ## Quick Links
-* [Pipelines list](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
-* [Components list](/components/README.md) - a catalog of components which can be reused in different pipelines
+* [Pipelines](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
+* [Components](/components/README.md) - a catalog of components which can be reused in different pipelines
 
 
 ## Tutorial
