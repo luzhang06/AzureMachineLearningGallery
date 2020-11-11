@@ -33,11 +33,12 @@ This tutorial will explain how to register component from the gallery with 3 sam
 
 Azure Machine Learning designer is the UI interface to build machine learning pipelines. It provides an easy to use drag-n-drop interface to build, test and manage your machine learning pipelines. 
 
-1. Create NYC Taxi dataset that will be used in the pipeline
+1. Create NYC Taxi dataset that will be used in the pipeline.
 
-    We will use Azure open datasets to create the NYC Taxi data. In ml.studio.com, go to Datasets -> Create datasets -> From Open Datasets. Choose NYC taxi data. We will register the data of Jan 2017 for this tutorial. Remember to register both green taxi trip records and yellow taxi trip records.
-    ![register-dataset](./register-nyctaxi-datasets.PNG) 
-1. Drag and drop the components and dataset. You can right click the dataset and click **Visualize** to preview the data.
+    We will use the NYC Taxi fare data hosted in Azure Open Datasets. We have put sample data of Jan 2016 under ./tutorial/data. Please download the data and register them as **tabular dataset** to your workspace. You can simply register from the dataset UI in AML Studio.    
+
+1. Drag and drop the components and dataset in designer. You can right click the dataset and click **Visualize** to preview the data.
+
 1. Connect them to build the pipeline. 
 
     The Clean Taxi Data component has two parameters. ```useful_columns``` is a list of columns that will be picked for following processing. ```columns``` is the column rename mapping dictionary. Since the nyc-taxi-yellow and nyc-taxi-green data have different column names, we need to rename the columns to unified names. ```columns``` captures the original column names and the unified new names that used in ```useful_columns```
@@ -59,4 +60,4 @@ Azure Machine Learning designer is the UI interface to build machine learning pi
 
 
 ## Next step
-This tutorial goes through how to use existing components from the gallery to build a machine learning pipeline. Follow the second part of the tutorial to learn how to create a component with your own code. 
+This tutorial goes through how to use existing components from the gallery to build a machine learning pipeline. Follow the [second part of the tutorial](./tutorial2-create-your-component.md) to learn how to create a component with your own code. 

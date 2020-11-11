@@ -2,11 +2,10 @@
 
 In [tutorial 1](./tutorial1-use-existing-components.md), you learned how to use existing components in the gallery. What if the component you want is not in the gallery? You can create your own component and share it in the gallery with others. This tutorial will walk through how to create your own component.
 
-This tutorial will continue to use the NYC Taxi Fare Prediction pipeline in tutorial 1. In tutorial 1, we already build a pipeline to train a XGBoost model. Now let's add one more data processing component before train the model. 
+This tutorial will continue to use the NYC Taxi Fare Prediction pipeline in tutorial 1. In tutorial 1, we already build a pipeline to train a XGBoost model. Now let's add one more data processing component to normalize the data before train the model. 
 
-The script and YAML spec of components used in tutorial 1 is available under */components/nyc-taxi-fare-prediction* folder, please go through the YAML spec and script to have an overview how the YAML spec works. 
 
-Basically, it's possible to wrap arbitrary code as Azure Machine Learning component by following the component specification. A component specification in YAML format describes the component in the Azure Machine Learning system. A component definition has the following parts:
+Azure Machine Learning component allows customer to wrap arbitrary code as a component by following the component specification. After wrapping as a component, it can be shared and reused by everyone. A component specification in YAML format describes the component. It has following parts:
 
 - **Metadata:** name, description, etc.
 - **Interface:**: input/output specifications (name, type, description, default value, etc).
@@ -29,7 +28,7 @@ parser.add_argument("--merged_data", type=str, help="merged taxi data")
 parser.add_argument("--output_normalize", type=str, help="replaced undefined values and renamed columns")
 
 args = parser.parse_args()
-combined_converted_df = load_data_frame_from_directory(args.filtered_data).data
+combined_converted_df = load_data_frame_from_directory(args.merged_data).data
 print("Argument (output normalized taxi data path): %s" % args.output_normalize)
 
 # These functions replace undefined values and rename to use meaningful names.
