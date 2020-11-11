@@ -7,11 +7,11 @@ This gallery highlights using Azure Machine Learning pipeline with components to
 
 ## Pipeline samples
 
-| Scenario |  Description | Pipeline draft in Designer | 
+| Scenario |  Description |
 | --- | --- | --- | --- |
-| [Text Classification with CNN](./pipelines/textcnn-pipeline/README.md) | Text classification pipeline - Demonstrates how to train and score models with component SDK | 
-| [Simple Algorithm Recommender](./pipelines/sar-pipeline/README.md) | SAR pipeline - Example of how to train, score and evaluate an SAR recommender |
-| [Spectral Residual Anomaly Detection](./pipelines/ad-pipeline/README.md) | Anomaly Detection pipeline - Example of how to build Spectral Residual Anomaly Detection model |  
+| [Text Classification with CNN](./pipelines/textcnn-pipeline/README.md) | Text classification pipeline - Demonstrates how to train and score models with component SDK 
+| [Simple Algorithm Recommender](./pipelines/sar-pipeline/README.md) | SAR pipeline - Example of how to train, score and evaluate an SAR recommender 
+| [Spectral Residual Anomaly Detection](./pipelines/ad-pipeline/README.md) | Anomaly Detection pipeline - Example of how to build Spectral Residual Anomaly Detection model 
 | [Image classification using AML labeling dataset](./pipelines/labeling-image-classification-pipeline/README.md) | Image classification pipeline - Shows how to use convert a labeled dataset to image directory and then use Designer built-in modules to build image classification model|
 
 ## Contributing
