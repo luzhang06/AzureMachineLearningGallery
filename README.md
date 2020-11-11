@@ -24,6 +24,16 @@ A component specification in YAML format describes the component in the Azure Ma
 
 Refer to [component spec definition](./component-spec-definition.md) for more details. 
 
+### Component samples
+
+| Scenario | Type | Description |
+| --- | --- | --- |
+|[Simple Algorithm for Recommendation (SAR)*](https://github.com/microsoft/recommenders/tree/master/examples/00_quick_start) | Algorithms | An example of how to train, score and evaluate an SAR recommender using the Azure Machine Learning component. </br> This scenario contains the following components: </br> [Stratified Splitter](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/stratified_splitter.yaml): split dataset into training dataset and test dataset. </br> [SAR Training](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/sar_train.yaml): Train a simple algorithm recommender. </br> [SAR Scoring](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/sar_score.yaml): using test dataset to score the trained recommender. </br> [MAP](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/map.yaml): Mean Average Precision at K metric. </br> [nDCG](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/ndcg.yaml): Normalized Discounted Cumulative Gain (nDCG) at K metric. </br> [Precision at K](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/precision_at_k.yaml): Precision at K metric. </br> [Recall at K](https://github.com/microsoft/recommenders/blob/andreas/hyperdrive/reco_utils/azureml/azureml_designer_modules/module_specs/recall_at_k.yaml): Recall at K metric. 
+|[Spectral Residual Anomaly Detection](https://github.com/microsoft/anomalydetector/tree/master/aml_module#spectral-residual-anomaly-detection-module)| Services | Anomaly detection aims to discover unexpected events or rare items in data. It is designed to be accurate, efficient and general, using Spectral Residual (SR) and Convolutional Neural Network (CNN).
+| [Text classification using CNN](./components/text-cnn) | Algorithms | An example of how to train, and score a CNN sentiment classifier using combination of Designer built-in modules and components. </br> This scenario contains the following components:</br> [textCNN Train Model](./components/text-cnn/textcnn-train/train.yaml) </br> [textCNN Score Model](./components/text-cnn/text-score/score.yaml) </br> [TextCNN Word to Id](./components/text-cnn/textcnn-preprocess/preprocess.yaml) </br>
+
+You can find more components [here](./components)
+
 ### Vote for more components
 
 You can vote for your wanted components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
