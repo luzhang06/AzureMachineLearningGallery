@@ -4,7 +4,7 @@
 
 This sample pipeline contains some components that implement with Text CNN for sentiment classification scenarios.
 
-The goal of text classification is to assign some piece of text to one or more predefined classes or categories. The piece of text could be a document, news article, search query, email, tweet, support tickets, customer feedback, user product review etc. Applications of text classification include categorizing newspaper articles and news wire contents into topics, organizing web pages into hierarchical categories, filtering spam email, sentiment analysis, predicting user intent from search queries, routing support tickets, and analyzing customer feedback. As part of the Azure Machine Learning offering, Microsoft provides a template to help data scientists easily build and deploy a text classification solution. In this document, you will learn how to use and customize the template through a demo use case.
+The goal of text classification is to assign some piece of text to one or more predefined classes or categories. The piece of text could be a document, news article, search query, email, tweet, support tickets, customer feedback, user product review etc. Applications of text classification include categorizing newspaper articles and news wire contents into topics, organizing web pages into hierarchical categories, filtering spam email, sentiment analysis, predicting user intent from search queries, routing support tickets, and analyzing customer feedback. As part of the Azure Machine Learning offering, Microsoft provides a template to help data scientists easily build and deploy a text sentiment binary classification solution. In this document, you will learn how to use and customize the template through a demo use case.
 
 #### You will learn how to:
 
@@ -22,7 +22,7 @@ Build pipeline with newly created components and AzureML built-in components.
 
 1. Add **Split Data** to canvas, connect it to the dataset, and configure the parameters.
 
-1. Add **TextCNN Train Model** to canvas, input the **label_column_name**, **true_label_value** and **text_column_name**.
+1. Add **TextCNN Train Model** to canvas, input the **label_column_name** (the sentiment column), **true_label_value** and **text_column_name** (the column contains text).
 
 1. Add **TextCNN Word to Id** to canvas, input the **text_column_name**.
 
