@@ -4,6 +4,31 @@ Azure Machine Learning Gallery enables our growing community of developers and d
 
 In this gallery, you can easily find a machine learning pipeline/component which is similar to the problem you are trying to solve, rather than starting from scratch.
 
+## What is pipeline and component 
+
+An Azure Machine Learning pipeline is an independently executable workflow of a complete machine learning task. Azure Machine Learning pipelines help you build, optimize, and manage machine learning workflows with simplicity, repeatability and quality assurance.
+
+
+A component is self-contained set of code that performs one step in the ML workflow (pipeline), such as data preprocessing, model training, model scoring and so on. A component is analogous to a function, in that it has a name, parameters, expects certain input and returns some value. 
+
+ 
+Data scientists or developers can wrap their arbitrary code as Azure Machine Learning component by following the component specification.
+
+### Component specification
+
+A component specification in YAML format describes the component in the Azure Machine Learning system. A component definition has the following parts:
+
+- **Metadata:** name, description, etc.
+- **Interface:**: input/output specifications (name, type, description, default value, etc).
+- **Implementation:**: A specification of how to run the component given a set of argument values for the component’s inputs, including source code and environment required to run the component. 
+
+Refer to [component spec definition](./component-spec-definition.md) for more details. 
+
+### Vote for more components
+
+You can vote for your wanted components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
+
+You can either vote for existing ideas or post your new idea in the Microsoft Azure Machine Learning channel.
 
 ## Quick Links
 * [Pipelines](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
@@ -13,6 +38,8 @@ In this gallery, you can easily find a machine learning pipeline/component which
 ## Tutorial
 - [Tutorial 1: Use existing component from gallery](./tutorial/tutorial1-use-existing-components.md)
 - Toturial 2: Create your own component
+ 
+
 ## Get Involved
 Please email us: stcamlstudio@microsoft.com
 
