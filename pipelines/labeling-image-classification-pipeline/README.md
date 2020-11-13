@@ -21,7 +21,8 @@ Build pipeline with newly created components and some built-in components in the
 
 1. Add **Convert Labeling Data to Image Directory** to canvas, connect it to the dataset, and configure the parameters.
 
-1. Add some built-in modules from the **Computer Vision** category and connect them like following:
+1. Add built-in modules from the **Computer Vision** category and connect them like following:
+![](./labeling-image-classification-pipeline.png)
 
 
 ## Related components
