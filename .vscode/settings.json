@@ -5,5 +5,5 @@
             "components/convert-labeling-data-to-image-directory/convert_labeling_data_to_image_directory.spec.yaml"
         ]
     },
-    "python.dataScience.jupyterServerURI": "local"
+    "jupyter.jupyterServerType": "local"
 }
