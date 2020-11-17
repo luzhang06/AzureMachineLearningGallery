@@ -20,13 +20,15 @@ You can find more components [here](./components)
 
 ### Vote for more components
 
-You can vote for your wanted components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
+Vote for more components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
 
-You can either vote for existing ideas or post your new idea in the Microsoft Azure Machine Learning channel. Make sure you contain **component**, and **designer** in the title.
+You can either vote for existing ideas or post your new idea in the Microsoft Azure Machine Learning channel. If you have specific design and script, feel free to upload in the channel.
+Make sure you contain **component**, and **designer** in the title if you post your new ideas.
 
 Existing candidates:
 
 [One-class SVM](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41067847-ask-for-more-unsupervised-models-as-train-anomaly)
+
 [Data validation component](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41931124-data-validation-component-in-azure-machine-learnin)
 
 ## Quick Links
