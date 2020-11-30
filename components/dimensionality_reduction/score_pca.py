@@ -11,7 +11,7 @@ from azureml.studio.core.io.model_directory import  load_model_from_directory
 from azureml.studio.core.data_frame_schema import DataFrameSchema
 
 
-# extract https://github.com/hirofumi-s-friends/recommenders
+
 def pcamodule_loader(load_from_dir, model_spec):
     '''
         load transformation state from disc

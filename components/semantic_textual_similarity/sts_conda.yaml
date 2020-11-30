@@ -1,0 +1,13 @@
+name: semantic_textual_similarity_component_environment
+channels:
+- defaults
+dependencies:
+- python=3.7
+- pip:
+  - PyYAML
+  - azureml-designer-core==0.0.50
+  - azureml-defaults==1.18.0
+  - pyarrow
+  - sentence-transformers==0.3.9
+  - scikit-learn==0.22.2.post1
+

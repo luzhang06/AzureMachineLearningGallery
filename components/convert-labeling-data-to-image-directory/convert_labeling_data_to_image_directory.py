@@ -1,12 +1,16 @@
 import fire
 from pathlib import Path
+from tempfile import mkdtemp
 
 from azureml.contrib.dataset import FileHandlingOption
 from azureml.core import Dataset
 from azureml.core import Run
+from azureml.data import FileDataset
 from azureml.studio.core.io.image_directory import ImageDirectory
 from azureml.studio.core.io.image_schema import ImageSchema
 from azureml.studio.core.utils.jsonutils import (dump_to_json_file, dump_to_json_lines)
+from azureml.designer.modules.computer_vision.preprocess.convert_to_image_directory.convert_to_image_directory import \
+    convert as convert_file_dataset
 
 _IMAGE_FILE_PATH = 'image'
 _META_FILE_PATH = '_meta.yaml'
@@ -73,27 +77,38 @@ def dump(image_list, schema, output_image_dir):
         dump_to_json_file(image_dir.meta.to_dict(), output_image_dir / _META_FILE_PATH)
 
 
-def parse_id_to_data(dataset_id):
+def parse_id_to_dataset(dataset_id):
     run = Run.get_context()
     ws = run.experiment.workspace
     return Dataset.get_by_id(ws, id=dataset_id)
 
 
-def convert(labeling_data, output_image_dir):
-    labeling_data = parse_id_to_data(dataset_id=labeling_data)
-    output_image_dir = Path(output_image_dir)
-    image_file_path = output_image_dir / _IMAGE_FILE_PATH
-    # labeling_data must come from 'data labeling' project output dataset.
-    df = labeling_data.to_pandas_dataframe(file_handling_option=FileHandlingOption.DOWNLOAD,
-                                           target_path=str(image_file_path),
-                                           overwrite_download=True)
-    labeling_data_type = labeling_data.label['type']
-    # generate image_list, schema.
-    image_list, schema = generate_image_list_schema(df=df,
-                                                    labeling_data_type=labeling_data_type,
-                                                    image_file_path=image_file_path)
-    # dump image_list, schema, meta and samples.
-    dump(image_list, schema, output_image_dir)
+def convert(dataset_id, output_image_dir):
+    dataset = parse_id_to_dataset(dataset_id=dataset_id)
+    # support file dataset as input so this module can be used in batch inference.
+    if isinstance(dataset, FileDataset):
+        target_path = mkdtemp()
+        dataset.download(target_path=target_path, overwrite=True)
+        convert_file_dataset(target_path, output_image_dir)
+        return
+
+    try:
+        output_image_dir = Path(output_image_dir)
+        image_file_path = output_image_dir / _IMAGE_FILE_PATH
+        # labeling_data must come from 'data labeling' project output dataset.
+        labeling_data = dataset
+        df = labeling_data.to_pandas_dataframe(file_handling_option=FileHandlingOption.DOWNLOAD,
+                                               target_path=str(image_file_path),
+                                               overwrite_download=True)
+        labeling_data_type = labeling_data.label['type']
+        # generate image_list, schema.
+        image_list, schema = generate_image_list_schema(df=df,
+                                                        labeling_data_type=labeling_data_type,
+                                                        image_file_path=image_file_path)
+        # dump image_list, schema, meta and samples.
+        dump(image_list, schema, output_image_dir)
+    except Exception as e:
+        raise NotImplementedError(f"Failed to convert labeling data due to '{e}'.")
 
 
 if __name__ == '__main__':

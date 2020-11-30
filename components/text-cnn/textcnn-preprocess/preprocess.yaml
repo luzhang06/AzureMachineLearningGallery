@@ -2,39 +2,33 @@
 # Licensed under the MIT License.
 
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: microsoft.com/azureml/samples://TextCNN Word to Id
+name: microsoft.com.azureml.samples.textcnn_word_to_id
 version: 0.0.8
 display_name: TextCNN Word to Id
 type: CommandComponent
 description: Transform Word to Id
-metadata:
-  tags:
-  - Data Transformation
+tags:
+  Data Transformation:
 inputs:
   input_vocab:
-    type: AnyDirectory
+    type: path
     description: The vocabulary file
+    optional: false
   input_text:
-    type: AnyDirectory
+    type: path
     description: Input text
+    optional: false
   text_column_name:
     type: String
     description: Select the column that contains the Text
+    optional: false
 outputs:
   processed_data:
-    type: AnyDirectory
+    type: path
     description: Processed data
-command:
-- python
-- run.py
-- --input-vocab
-- $inputPath: inputs.input_vocab
-- --input-data
-- $inputPath: inputs.input_text
-- --text-column
-- $inputValue: inputs.text_column_name
-- --output-data
-- $outputPath: outputs.processed_data
+command: >-
+  python run.py --input-vocab {inputs.input_vocab} --input-data {inputs.input_text}
+  --text-column {inputs.text_column_name} --output-data {outputs.processed_data}
 environment:
   conda:
     conda_dependencies_file: conda.yaml

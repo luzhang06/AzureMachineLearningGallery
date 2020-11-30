@@ -1,5 +1,4 @@
-# pylint: disable=W1202
-# pylint: disable=R0903
+# pylint: disable=W1202,R0903
 
 """Semantic textual similarity module"""
 

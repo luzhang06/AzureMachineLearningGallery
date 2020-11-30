@@ -4,7 +4,8 @@ dependencies:
 - python=3.6.5
 - pip:
   - azureml-contrib-dataset
-  - azureml-dataset-runtime==1.13.0
-  - azureml-designer-core[image]==0.0.41
+  - azureml-dataset-runtime==1.15.0
+  - azureml-designer-core[image]==0.0.50
+  - azureml-designer-cv-modules==0.0.20
   - fire
 name: project_environment

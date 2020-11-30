@@ -1,0 +1,54 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.css.semantic_textual_similarity
+version: 0.0.1
+display_name: Semantic Textual Similarity
+type: CommandComponent
+description: |
+  Compute semantic similary matrix of text corpus using Siasmese transformers networks . https://arxiv.org/abs/1908.10084 
+  This module requires GPU compute.
+tags:
+  Feature Engineering:
+  Sentence Embeddings:
+  Text Classification:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  input_dataset:
+    type: DataFrameDirectory
+    optional: false
+  target_column:
+    type: string
+    description: Select target column
+    optional: false
+  pretrained_sentence_bert:
+    type: Mode
+    enum:
+    - bert-base
+    - bert-large
+    - roberta-base
+    - roberta-large
+    - distilbert-base
+    default: bert-base
+    optional: false
+  distance:
+    type: Mode
+    enum:
+    - cosine
+    - euclidean
+    - manhattan
+    default: cosine
+    optional: false
+outputs:
+  similarity_matrix:
+    type: DataFrameDirectory
+  embeddings:
+    type: DataFrameDirectory
+command: >-
+  python sts_module.py --input-dir {inputs.input_dataset} --column-name {inputs.target_column}
+  --transformer {inputs.pretrained_sentence_bert} --distance {inputs.distance} --sim-dir
+  {outputs.similarity_matrix} --embedding-dir {outputs.embeddings}
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/base-gpu:intelmpi2018.3-cuda10.0-cudnn7-ubuntu16.04
+  conda:
+    conda_dependencies_file: sts_conda.yaml
+  os: Linux

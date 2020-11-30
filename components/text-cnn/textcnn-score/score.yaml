@@ -2,34 +2,29 @@
 # Licensed under the MIT License.
 
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: microsoft.com/azureml/samples://TextCNN Score Model
+name: microsoft.com.azureml.samples.textcnn_score_model
 version: 0.0.3
 display_name: TextCNN Score Model
 type: CommandComponent
 description: Predict the classes through the trained TextCNN model
-metadata:
-  tags:
-  - Model Scoring & Evaluation
+tags:
+  Model Scoring & Evaluation:
 inputs:
   trained_model:
     type: ModelDirectory
     description: The trained model file
+    optional: false
   predict_data:
-    type: AnyDirectory
+    type: path
     description: Predict data
+    optional: false
 outputs:
   predict_result:
-    type: AnyDirectory
+    type: path
     description: Predict result
-command:
-- python
-- run.py
-- --trained-model
-- $inputPath: inputs.trained_model
-- --predict-path
-- $inputPath: inputs.predict_data
-- --predict-result-path
-- $outputPath: outputs.predict_result
+command: >-
+  python run.py --trained-model {inputs.trained_model} --predict-path {inputs.predict_data}
+  --predict-result-path {outputs.predict_result}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/base-gpu:intelmpi2018.3-cuda10.0-cudnn7-ubuntu16.04

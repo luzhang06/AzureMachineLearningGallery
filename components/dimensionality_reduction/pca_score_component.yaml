@@ -1,0 +1,29 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.css.score_dimensionality_reduction
+version: 0.0.1
+display_name: Score Dimensionality Reduction
+type: CommandComponent
+description: |
+  Apply Dimensionality reduction  to score data using transformation state from training dataset.
+tags:
+  Unsupervised Learning:
+  Matrix Decomposition:
+  Statistics:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  scoring_dataset:
+    type: DataFrameDirectory
+    optional: false
+  transformation_state:
+    type: ModelDirectory
+    optional: false
+outputs:
+  output_principal_components:
+    type: DataFrameDirectory
+command: >-
+  python score_pca.py --input-dir {inputs.scoring_dataset} --model-input-dir {inputs.transformation_state}
+  --output-dir {outputs.output_principal_components}
+environment:
+  conda:
+    conda_dependencies_file: pca_conda.yaml
+  os: Linux

@@ -1,0 +1,37 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.css.score_sequence_embedding
+version: 0.0.1
+display_name: Score Sequence Embedding
+type: CommandComponent
+description: |
+  Apply sequence embeddings to score data using transformation state from training dataset   https://arxiv.org/abs/1608.03533.
+tags:
+  Feature Engineering:
+  Sequence Analysis:
+  Clustering:
+  Classification:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  scoring_dataset:
+    type: DataFrameDirectory
+    optional: false
+  transformation_state:
+    type: ModelDirectory
+    optional: false
+  sequence_column:
+    type: String
+    optional: false
+  identifier_column:
+    type: String
+    optional: true
+outputs:
+  embeddings:
+    type: DataFrameDirectory
+command: >-
+  python score_sgt.py --input-dir {inputs.scoring_dataset} --sequence-column {inputs.sequence_column}
+  [--identifier-column {inputs.identifier_column}] --model-input-dir {inputs.transformation_state}
+  --output-dir {outputs.embeddings}
+environment:
+  conda:
+    conda_dependencies_file: sgt_conda.yaml
+  os: Linux
