@@ -2,96 +2,83 @@
 # Licensed under the MIT License.
 
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: microsoft.com/azureml/samples://TextCNN Train Model
+name: microsoft.com.azureml.samples.textcnn_train_model
 version: 0.0.17
 display_name: TextCNN Train Model
 type: CommandComponent
 description: Trains a TextCNN model in a supervised manner
-metadata:
-  tags:
-  - Model Training
+tags:
+  Model Training:
 inputs:
   train_data_file:
-    type: AnyDirectory
+    type: path
     description: Training data
+    optional: false
   validation_data_file:
-    type: AnyDirectory
+    type: path
     description: Test data
+    optional: false
   word_embedding_dim:
     type: Int
     description: The dimention of word embeddings
     default: 300
+    optional: false
   kernel_num:
     type: Int
     description: Number of each kind of kernel
     default: 128
+    optional: false
   dropout:
     type: Float
     description: The probability for dropout
     default: 0.5
+    optional: false
   batch_size:
     type: Int
     description: Batch size
     default: 32
+    optional: false
   l2_regularization_weight:
     type: Float
     description: L2 regularization weight
     default: 0
+    optional: false
   test_interval:
     type: Int
     description: How many steps to wait before testing
     default: 100
+    optional: false
   epoch_num:
     type: Int
     description: Epoch num
     default: 1
+    optional: false
   label_column_name:
     type: String
     description: Select the column that contains the label
+    optional: false
   true_label_value:
     type: String
     description: Set true label value
+    optional: false
   text_column_name:
     type: String
     description: Select the column that contains the Text
+    optional: false
 outputs:
   trained_model:
     type: ModelDirectory
     description: Trained learner
   vocab:
-    type: AnyDirectory
+    type: path
     description: Vocab for predict the sentence
-command:
-- python
-- run.py
-- --embed-dim
-- $inputValue: inputs.word_embedding_dim
-- --kernel-num
-- $inputValue: inputs.kernel_num
-- --dropout
-- $inputValue: inputs.dropout
-- --train-file
-- $inputPath: inputs.train_data_file
-- --test-file
-- $inputPath: inputs.validation_data_file
-- --label-column
-- $inputValue: inputs.label_column_name
-- --true-label-value
-- $inputValue: inputs.true_label_value
-- --text-column
-- $inputValue: inputs.text_column_name
-- --batch-size
-- $inputValue: inputs.batch_size
-- --l2
-- $inputValue: inputs.l2_regularization_weight
-- --test-interval
-- $inputValue: inputs.test_interval
-- --epochs
-- $inputValue: inputs.epoch_num
-- --trained-model
-- $outputPath: outputs.trained_model
-- --vocab-path
-- $outputPath: outputs.vocab
+command: >-
+  python run.py --embed-dim {inputs.word_embedding_dim} --kernel-num {inputs.kernel_num}
+  --dropout {inputs.dropout} --train-file {inputs.train_data_file} --test-file {inputs.validation_data_file}
+  --label-column {inputs.label_column_name} --true-label-value {inputs.true_label_value}
+  --text-column {inputs.text_column_name} --batch-size {inputs.batch_size} --l2 {inputs.l2_regularization_weight}
+  --test-interval {inputs.test_interval} --epochs {inputs.epoch_num} --trained-model
+  {outputs.trained_model} --vocab-path {outputs.vocab}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/base-gpu:intelmpi2018.3-cuda10.0-cudnn7-ubuntu16.04

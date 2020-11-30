@@ -1,22 +1,22 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: Convert Labeling Data to Image Directory
-version: 0.0.1
+name: convert_labeling_data_to_image_directory
+version: 0.0.3
 display_name: Convert Labeling Data to Image Directory
 type: CommandComponent
-metadata: {}
+tags: {}
 inputs:
-  labeling_data:
+  dataset_id:
     type: AzureMLDataset
+    optional: false
 outputs:
   output_image_dir:
     type: ImageDirectory
-command:
-- python
-- convert_labeling_data_to_image_directory.py
-- --labeling_data
-- $inputPath: inputs.labeling_data
-- --output_image_dir
-- $outputPath: outputs.output_image_dir
+command: >-
+  python convert_labeling_data_to_image_directory.py --dataset_id {inputs.dataset_id}
+  --output_image_dir {outputs.output_image_dir}
 environment:
   conda:
     conda_dependencies_file: conda.yaml

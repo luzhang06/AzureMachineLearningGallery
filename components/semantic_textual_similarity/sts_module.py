@@ -1,9 +1,9 @@
-# pylint: disable=W1202
+# pylint: disable=W1202,R0913
 
 
 """ Semantic textual similarity module entry"""
 
-
+import sys
 import argparse
 from azureml.studio.core.logger import module_logger as logger
 from azureml.studio.core.io.data_frame_directory \
@@ -12,18 +12,21 @@ from azureml.studio.core.data_frame_schema import DataFrameSchema
 from sts import TextualSimilarity
 
 
-def main(args=None):
+
+SUPPORTED_TRANSFORMERS = {'bert-base':'bert-base-nli-stsb-mean-tokens',
+                          'bert-large':'bert-large-nli-stsb-mean-tokens',
+                          'roberta-base':'roberta-base-nli-stsb-mean-tokens',
+                          'roberta-large':'roberta-large-nli-stsb-mean-tokens',
+                          'distilbert-base':'distilbert-base-nli-stsb-mean-tokens'}
+
+
+def main(args):
+
     '''
         Module entry function
     '''
-    supported_transformers = {'bert-base':'bert-base-nli-stsb-mean-tokens',
-                              'bert-large':'bert-large-nli-stsb-mean-tokens',
-                              'roberta-base':'roberta-base-nli-stsb-mean-tokens',
-                              'roberta-large':'roberta-large-nli-stsb-mean-tokens',
-                              'distilbert-base':'distilbert-base-nli-stsb-mean-tokens'}
 
-
-    transformer = supported_transformers[args.transformer]
+    transformer = SUPPORTED_TRANSFORMERS[args.transformer]
 
     logger.debug(f'input-dir {args.input_dir}')
     logger.debug(f'column {args.column_name}')
@@ -32,6 +35,10 @@ def main(args=None):
     logger.debug(f'sim-dir {args.sim_dir}')
 
     input_df = load_data_frame_from_directory(args.input_dir).data
+
+    if input_df[args.column_name].isnull().sum().sum() > 0:
+        logger.debug(f'column{args.column_name} contains missing values ')
+        sys.exit(1)
 
     sts = TextualSimilarity(transformer=transformer, distance_func=args.distance)
     embedding_df, sim_df = sts.fit_transform(input_df[args.column_name].values)

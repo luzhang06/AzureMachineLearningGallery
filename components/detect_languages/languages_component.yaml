@@ -1,0 +1,29 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.css.detect_languages
+version: 0.0.1
+display_name: Detect Languages
+type: CommandComponent
+description: Detect languages on text columns in a dataset.
+tags:
+  Text Analytics:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  input_dataset:
+    type: DataFrameDirectory
+    optional: false
+  target_columns:
+    type: String
+    description: Comma sperated column names
+    optional: false
+outputs:
+  results_dataset:
+    type: DataFrameDirectory
+command: >-
+  python detect_languages_module.py --input-dir {inputs.input_dataset} --target-column
+  {inputs.target_columns} --output-dir {outputs.results_dataset}
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/base-gpu:intelmpi2018.3-cuda10.0-cudnn7-ubuntu16.04
+  conda:
+    conda_dependencies_file: languages_conda.yaml
+  os: Linux

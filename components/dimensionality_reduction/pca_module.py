@@ -8,10 +8,12 @@ from sklearn.decomposition import PCA, SparsePCA, KernelPCA, IncrementalPCA
 from azureml.core.run import Run
 
 
+
+
 class PCAModule():
     """
         Dimensionality reduction class
-       provide support for PCA, sparse, kernel and incremental PCA
+        covers support for linear,, sparse, kernel and incremental PCA
     """
 
     def __init__(self, args):
@@ -22,7 +24,7 @@ class PCAModule():
 
         '''
 
-        pca_type_mapper = {'PCA':('pca', PCA),\
+        pca_type_mapper = {'Linear PCA':('pca', PCA),\
                            'Sparse PCA':('sparse', SparsePCA),\
                            'Kernel PCA':('kernel', KernelPCA),\
                            'Incremental PCA':('incremental', IncrementalPCA)}
@@ -94,38 +96,40 @@ class PCAModule():
 
     def get_signature(self, args):
         '''
-        map user parameters to transformer arguments
+        map user parameters to learner arguments
 
         args:
             args:dict user paramater
-            pca_type: str requested transformer type
+            pca_type: str requested learner type
 
         '''
         if self.pca_type == 'sparse':
-            pca_params = {'n_components':args.n_components, 'alpha':args.sparse_alpha,
-                          'ridge_alpha':args.ridge_alpha, 'max_iter':args.sparse_iterations,
-                          'tol':args.sparse_tolerance, 'method':args.sparse_method,
-                          'n_jobs':None, 'U_init':None, 'V_init':None, 'verbose':False,
+            pca_params = {'n_components':args.n_components,
+                          'alpha':args.sparse_alpha,
+                          'ridge_alpha':args.ridge_alpha,
+                          'max_iter':args.sparse_iterations,
+                          'method':args.sparse_method,
                           'random_state':args.seed}
 
         elif self.pca_type == 'kernel':
-            pca_params = {'n_components':args.n_components, 'kernel':args.kernel,
-                          'gamma':args.gamma, 'degree':args.degree,
-                          'coef0':args.coef0, 'kernel_params':None,
-                          'alpha':1.0, 'fit_inverse_transform':False,
-                          'eigen_solver':args.eigen_solver, 'tol':args.kernel_tolerance,
-                          'max_iter':args.kernel_max_iters, 'remove_zero_eig':args.omit_0_eig,
-                          'random_state':args.seed, 'copy_X':True, 'n_jobs':None}
+            pca_params = {'n_components':args.n_components,
+                          'kernel':args.kernel,
+                          'gamma':args.gamma,
+                          'degree':args.degree,
+                          'coef0':args.coef0,
+                          'eigen_solver':args.eigen_solver,
+                          'remove_zero_eig':args.omit_0_eig,
+                          'random_state':args.seed}
 
         elif self.pca_type == "incremental":
-            pca_params = {'n_components':args.n_components, 'whiten':args.inc_whiten,
-                          'copy':True, 'batch_size':None}
+            pca_params = {'n_components':args.n_components,
+                          'whiten':args.whiten}
 
 
         elif self.pca_type == "pca":
-            pca_params = {'n_components':args.n_components, 'copy':True,
-                          'whiten':args.inc_whiten, 'svd_solver':args.svd_solver,
-                          'tol':args.tolerance, 'iterated_power'\
-                            :args.iterated_power, 'random_state':args.seed}
+            pca_params = {'n_components':args.n_components,
+                          'whiten':args.whiten,
+                          'svd_solver':args.svd_solver,
+                          'random_state':args.seed}
 
         return pca_params

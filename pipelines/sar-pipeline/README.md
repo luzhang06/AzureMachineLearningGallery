@@ -4,7 +4,7 @@
 
 This sample pipeline contains some components that implement with Simple Algorithm for recommendation scenarios.
 
-Simple Algorithm for Recommendation (SAR) is a fast and scalable algorithm for personalized recommendations based on user transaction history. It produces easily explainable and interpretable recommendations and handles "cold item" and "semi-cold user" scenarios. SAR is a kind of neighborhood based algorithm (as discussed in [Recommender Systems by Aggarwal](https://dl.acm.org/doi/book/10.5555/2931100)) which is intended for ranking top items for each user.
+Simple Algorithm for Recommendation (SAR) is a fast and scalable algorithm for personalized recommendations based on user transaction history. It produces easily explainable and interpretable recommendations and handles "cold item" and "semi-cold user" scenarios. SAR is a kind of neighborhood based algorithm (as discussed in [Recommender Systems by Aggarwal](https://dl.acm.org/doi/book/10.5555/2931100)) which is intended for ranking top items for each user. Recommenders are commonly used in recommendation of movie, restaurant and etc.
 
 #### You will learn how to:
 
@@ -17,6 +17,14 @@ Build pipeline with newly created components and AzureML sample dataset.
 ## Build the pipeline
 
 1. Open Designer, and drag the **Movie Ratings** dataset to canvas.
+
+   If you have your own dataset, it should be a tabular dataset with following format:
+
+   | User ID | Movie ID | Rating | Timestamp |
+   | ---     | ---      | ---    | ---       |
+   | 1 | 68646 | 10 | 1381920027|  
+   | 1 | 113277 | 10| 1379466669| 
+   | 2 | 454876 | 8 | 1394818630| 
 
 1. Add **Stratified Splitter** to canvas, connect it to the dataset, and configure the parameters.
 

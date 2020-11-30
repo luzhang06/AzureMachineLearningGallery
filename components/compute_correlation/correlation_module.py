@@ -1,5 +1,4 @@
-# pylint: disable=R0903
-# pylint: disable=W1202
+# pylint: disable=R0903,W1202
 
 """Compute correlation module"""
 
@@ -8,6 +7,8 @@ from azureml.studio.core.logger import module_logger as logger
 from azureml.studio.core.io.data_frame_directory \
      import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.data_frame_schema import DataFrameSchema
+
+
 
 class ComputeCorrelationModule():
     """Compute correlation class module"""
@@ -23,13 +24,15 @@ class ComputeCorrelationModule():
         parameters:
            df: Pandas dataframe of shape (m,n), expects numeric values.
                Columns with other types than numeric will be ignored.
-               Columns with NaN will be return as NaN
+               NA/null values are excluded
 
         return correlation matrix as pandas dataframe of shape (n,n)
         '''
-        logger.debug(f'datatypes found {input_df.dtypes}')
-        logger.debug(f'probe dataset {input_df.describe()}')
+        print(f'datatypes found {input_df.dtypes}')
+        print(f'probe dataset {input_df.describe()}')
         return input_df.corr(self.corr_type)
+
+
 
 def main(args=None):
     '''

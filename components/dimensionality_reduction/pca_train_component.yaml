@@ -1,0 +1,129 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.css.train_dimensionality_reduction
+version: 0.0.1
+display_name: Train Dimensionality Reduction
+type: CommandComponent
+description: |
+  Apply dimensionality reduction to dataset using one of the following algorithms: Sparse PCA, Incremental PCA, Kernel PCA and PCA.
+tags:
+  Unsupervised Learning:
+  Matrix Decomposition:
+  Statistics:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  input_dataset:
+    type: DataFrameDirectory
+    optional: false
+  number_of_components:
+    type: Integer
+    description: Number of components to keep.
+    optional: false
+  select_dimensionality_reduction_algorithm_to_apply:
+    type: Mode
+    description: Specify type of dimensionality reduction algorithm to use.
+    enum:
+    - Linear PCA
+    - Sparse PCA
+    - Incremental PCA
+    - Kernel PCA
+    default: Linear PCA
+    optional: false
+  svd_solver:
+    type: Mode
+    enum:
+    - auto
+    - full
+    - arpack
+    - randomized
+    default: auto
+    optional: true
+  whiten_principal_components:
+    type: Boolean
+    default: false
+    optional: true
+  alpha:
+    type: Integer
+    description: Control sparsity. higher values lead to sparser components
+    default: 1
+    optional: true
+  ridge_alpha:
+    type: Float
+    description: Control shrinkage
+    default: 0.01
+    optional: true
+  maximum_iterations:
+    type: Integer
+    description: Maximum number of iterations
+    default: 1000
+    optional: true
+  method:
+    type: Mode
+    description: Type of method to solve Lasso problem coordinate descent(cd), least
+      angle regression(lars).
+    enum:
+    - lars
+    - cd
+    default: lars
+    optional: true
+  kernel:
+    type: Mode
+    description: Non linear dimensionality reduction using kernels.
+    enum:
+    - linear
+    - rbf
+    - poly
+    - sigmoid
+    - cosine
+    - precomputed
+    default: rbf
+    optional: true
+  gamma:
+    type: float
+    description: kernel coefficient for rbf,poly and sigmoid kernels.
+    optional: true
+  degree:
+    type: Integer
+    description: Degree for polynomial kernel.
+    default: 3
+    optional: true
+  coefficient0:
+    type: Float
+    default: 1.0
+    optional: true
+  eigen_solver:
+    type: Mode
+    description: Eigensolver to use.
+    enum:
+    - auto
+    - arpack
+    - dense
+    default: auto
+    optional: true
+  omit_zero_eigenvalues:
+    type: Boolean
+    description: Remove components with corresponding zero eigenvalues
+    default: false
+    optional: true
+  seed:
+    type: Integer
+    description: Reproducibility seed.
+    default: 123
+    optional: true
+outputs:
+  output_dataset:
+    type: DataFrameDirectory
+  transformation_state:
+    type: ModelDirectory
+command: >-
+  python pca_entry.py --input-dir {inputs.input_dataset} --output-dir {outputs.output_dataset}
+  --model-output-dir {outputs.transformation_state} [--seed {inputs.seed}] --n-components
+  {inputs.number_of_components} --pca-type {inputs.select_dimensionality_reduction_algorithm_to_apply}
+  [--svd-solver {inputs.svd_solver}] [--sparse-alpha {inputs.alpha}] [--ridge-alpha
+  {inputs.ridge_alpha}] [--sparse-method {inputs.method}] [--sparse_iterations {inputs.maximum_iterations}]
+  [--kernel {inputs.kernel}] [--gamma {inputs.gamma}] [--degree {inputs.degree}] [--coef0
+  {inputs.coefficient0}] [--eigen-solver {inputs.eigen_solver}] [--omit-0-eig {inputs.omit_zero_eigenvalues}]
+  [--whiten {inputs.whiten_principal_components}]
+environment:
+  conda:
+    conda_dependencies_file: pca_conda.yaml
+  os: Linux

@@ -8,6 +8,7 @@ dependencies:
 - torchvision=0.6.0
 - pip:
   - azureml-defaults
+  - azureml-dataprep>=1.6
   - pandas==0.25.3
   - numpy==1.18.1
   - pyarrow==0.16.0

@@ -1,0 +1,45 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.css.train_sequence_embedding
+version: 0.0.1
+display_name: Train Sequence Embedding
+type: CommandComponent
+description: |
+  Sequence embedding module  is based on Sequence graph transfom which extracts short and long-term sequence features and embeds them in a finite-dimensional feature space. https://arxiv.org/abs/1608.03533
+tags:
+  Feature Engineering:
+  Sequence Analysis:
+  Clustering:
+  Classification:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  training_dataset:
+    type: DataFrameDirectory
+    optional: false
+  sequence_column:
+    type: String
+    optional: false
+  identifier_column:
+    type: String
+    optional: true
+  length_sensitive:
+    type: Boolean
+    default: false
+    optional: false
+  kappa:
+    type: Integer
+    default: 1
+    optional: false
+outputs:
+  embeddings:
+    type: DataFrameDirectory
+  transformation_state:
+    type: ModelDirectory
+command: >-
+  python train_sgt.py --input-dir {inputs.training_dataset} --output-dir {outputs.embeddings}
+  --model-output-dir {outputs.transformation_state} --sequence-column {inputs.sequence_column}
+  [--identifier-column {inputs.identifier_column}] --length-sensitive {inputs.length_sensitive}
+  --kappa {inputs.kappa}
+environment:
+  conda:
+    conda_dependencies_file: sgt_conda.yaml
+  os: Linux

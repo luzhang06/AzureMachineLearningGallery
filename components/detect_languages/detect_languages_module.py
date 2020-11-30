@@ -8,11 +8,10 @@ import wget
 import pandas as pd
 import fasttext
 from pycountry import languages
-from azureml.studio.core.logger import module_logger as logger
 from azureml.studio.core.io.data_frame_directory \
      import load_data_frame_from_directory, save_data_frame_to_directory
 from azureml.studio.core.data_frame_schema import DataFrameSchema
-
+from azureml.studio.core.logger import module_logger as logger
 
 class LanguagesDetector():
     ''' Language detection class '''
@@ -21,7 +20,7 @@ class LanguagesDetector():
         self.model_name = 'lid.176.bin'
         self.model_url = 'https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin'
         if not os.path.exists(self.model_name):
-            print(f'downloading {self.model_name} ...')
+            logger.debug(f'downloading {self.model_name} ...')
             wget.download(self.model_url, out=os.getcwd())
 
         self.model = fasttext.load_model(os.path.join(os.getcwd(), self.model_name))
@@ -45,7 +44,7 @@ class LanguagesDetector():
                 language_name = languages.get(alpha_2=iso_code).name
             except AttributeError:
                 # language name lookup fail
-                print(f'failed to query for language {pred}')
+                logger.debug(f'failed to query for language {pred}')
             return pd.Series([language_name, iso_code, round(pred[1][0], 2)],)
 
         for col_name in cols:
@@ -54,7 +53,6 @@ class LanguagesDetector():
                       f'{col_name}_likelihood']] = input_df[col_name].apply(detect)
 
         return input_df
-
 
 def main(args=None):
     '''
