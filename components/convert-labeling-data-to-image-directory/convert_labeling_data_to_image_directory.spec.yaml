@@ -3,7 +3,7 @@
 
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: convert_labeling_data_to_image_directory
-version: 0.0.3
+version: 0.0.4
 display_name: Convert Labeling Data to Image Directory
 type: CommandComponent
 tags: {}
