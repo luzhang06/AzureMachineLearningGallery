@@ -6,7 +6,7 @@ In this gallery, you can easily find a machine learning pipeline/component which
 
 
 
-### Component samples
+## Component samples
 
 | Algorithm | Description |
 | --- | --- |
@@ -18,7 +18,7 @@ In this gallery, you can easily find a machine learning pipeline/component which
 
 You can find more components [here](./components)
 
-### Vote for more components
+## Vote for more components
 
 Vote for more components in the [Microsoft Azure forum](https://feedback.azure.com/forums/257792-machine-learning).
 
@@ -42,7 +42,20 @@ Existing candidates:
  
 
 ## Get Involved
-Please email us: stcamlstudio@microsoft.com
+Please email us: azuremldesigner@microsoft.com
+
+## Help & Support
+
+This project uses GitHub Issues to track bugs and feature requests. 
+
+Please search the existing issues before filing new issues to avoid duplicates.  
+For new issues, file your bug or feature request as a new Issue. 
+
+Following information are useful for debugging:
+- Pipeline run URL
+- Pipeline graph
+- Detailed error message
+- 70_driver_log of failed component
 
 # Contributing
 

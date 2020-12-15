@@ -14,6 +14,19 @@ This gallery highlights using Azure Machine Learning pipeline with components to
 | [Spectral Residual Anomaly Detection](./pipelines/ad-pipeline/README.md) | Anomaly Detection pipeline - Example of how to build Spectral Residual Anomaly Detection model 
 | [Image classification using AML labeling dataset](./pipelines/labeling-image-classification-pipeline/README.md) | Image classification pipeline - Shows how to use convert a labeled dataset to image directory and then use Designer built-in modules to build image classification model|
 
+## Help & Support
+
+This project uses GitHub Issues to track bugs and feature requests. 
+
+Please search the existing issues before filing new issues to avoid duplicates.  
+For new issues, file your bug or feature request as a new Issue. 
+
+Following information are useful for debugging:
+- Pipeline run URL
+- Pipeline graph
+- Detailed error message
+- 70_driver_log of failed component
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

@@ -25,6 +25,20 @@ In the Azure Machine Learning studio portal, you can create new component in you
 1. Follow the guidance to finish your creation. And You could find your new components under **Custom Module** in the module list of Designer.
 
 
+## Help & Support
+
+This project uses GitHub Issues to track bugs and feature requests. 
+
+Please search the existing issues before filing new issues to avoid duplicates.  
+For new issues, file your bug or feature request as a new Issue. 
+
+Following information are useful for debugging:
+- Pipeline run URL
+- Pipeline graph
+- Detailed error message
+- 70_driver_log of failed component
+
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
