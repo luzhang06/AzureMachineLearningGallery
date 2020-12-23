@@ -27,9 +27,15 @@ Make sure you contain **component**, and **designer** in the title if you post y
 
 Existing candidates:
 
-[One-class SVM](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41067847-ask-for-more-unsupervised-models-as-train-anomaly)
+* [One-class SVM](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41067847-ask-for-more-unsupervised-models-as-train-anomaly)
 
-[Data validation component](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41931124-data-validation-component-in-azure-machine-learnin)
+* [Data validation component](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41931124-data-validation-component-in-azure-machine-learnin)
+
+* [Non-English support in "Preprocess Text"](https://feedback.azure.com/forums/257792-machine-learning/suggestions/42077482-support-non-english-language-in-preprocess-data)
+
+* [Call pretrained model or cognitive service](https://feedback.azure.com/forums/257792-machine-learning/suggestions/41962987-custom-module-in-designer)
+
+* [AutoML component](https://feedback.azure.com/forums/257792-machine-learning/suggestions/42115291-make-automl-a-module-in-the-designer)
 
 ## Quick Links
 * [Pipelines](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
