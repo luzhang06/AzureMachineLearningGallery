@@ -1,0 +1,32 @@
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.css.compute_correlation
+version: 0.0.1
+display_name: Compute Correlation
+type: CommandComponent
+description: Compute correlation matrix of pairwise columns in dataset using kendall,
+  spearman, pearson methods
+tags:
+  statistical Functions:
+  contact: https://github.com/azure/AzureMachineLearningGallery
+inputs:
+  input_dataset:
+    type: DataFrameDirectory
+    optional: false
+  correlation_method:
+    type: Mode
+    enum:
+    - pearson
+    - kendall
+    - spearman
+    default: pearson
+    optional: false
+outputs:
+  results_dataset:
+    type: DataFrameDirectory
+command: >-
+  python correlation_module.py --input-dir {inputs.input_dataset} --correlation-method
+  {inputs.correlation_method} --output-dir {outputs.results_dataset}
+environment:
+  conda:
+    conda_dependencies_file: corr_conda.yaml
+  os: Linux

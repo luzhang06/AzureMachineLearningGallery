@@ -1,0 +1,11 @@
+name: Principal_components_analysis_module_environment
+channels:
+- defaults
+dependencies:
+- python=3.7
+- pip:
+  - PyYAML
+  - azureml-designer-core==0.0.50
+  - azureml-defaults==1.18.0
+  - pyarrow
+  - scikit-learn==0.22.2.post1

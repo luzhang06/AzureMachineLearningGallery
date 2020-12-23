@@ -1,0 +1,12 @@
+name: project_environment
+channels:
+- defaults
+dependencies:
+- python=3.6.8
+- pip=20.0
+- pip:
+  - azureml-defaults
+  - azureml-dataprep>=1.6
+  - nltk==3.4
+  - pandas==0.25.3
+  - pyarrow==0.16.0
