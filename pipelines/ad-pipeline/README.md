@@ -16,7 +16,7 @@ Build pipeline with newly created components and a manufacture sample dataset.
 
 ## Build the pipeline
 
-1. Register this [AnomalyDetector-Manufacture dataset](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Kiosk/Assets/AnomalyDetector/AnomalyDetector-Manufacture.csv) as **File dataset** in your Azure Machine Learning workspace.
+1. Register this [AnomalyDetector-Manufacture dataset](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Kiosk/Assets/AnomalyDetector/AnomalyDetector-Manufacture.csv) as **Tabular dataset** in your Azure Machine Learning workspace.
 
     The dataset above is a sample dataset. You can use your own dataset, make sure that it is registered as Tabular dataset and you can also preprocess your dataset using Designer built-in modules. Make sure that the input dataset of **Spectral Residual Anomaly Detection** is with following format, and the count of time series must be more than 12:
 
@@ -47,6 +47,7 @@ Build pipeline with newly created components and a manufacture sample dataset.
 1. When the pipeline runs completed, you can click on **Visualize** icon in the **Outputs+logs** tab in the right panel of the **Spectral Residual Anomaly Detection** module, or right-click the module to select **Visualize**.
 
     The output including following columns according to the `detect_mode` parameter.
+    
     In AnomalyOnly mode, the following columns will be output:
     * `isAnomaly`. The anomaly result.
     * `mag`. The magnitude after spectral residual transformation.
