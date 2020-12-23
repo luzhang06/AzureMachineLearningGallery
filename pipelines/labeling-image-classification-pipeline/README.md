@@ -31,10 +31,10 @@ Build pipeline with newly created components and some built-in components in the
 |[Convert Labeling Data to Image Directory](.../components/convert-labeling-data-to-image-directory/convert_labeling_data_to_image_directory.spec)| Convert AML labeling dataset to Image Directory which can be used in Designer. 
 
 
-| Contributed by | Maintained by | Category | Tags | Last update | 
-|---|---|---|---|---|
-| Microsoft | @Microsoft Open Source | Tutorials |recommendation| September 4, 2020 |
+| Contributed by |  Tags | Last update | 
+|---|---|---|
+| Microsoft | recommendation| December, 2020 |
 
 <a href="https://trackgit.com">
-<img src="https://sfy.cx/u/oFu" alt="trackgit-views" />
-</a> views
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj17kwgmik71nim5skj1" alt="trackgit-views" />
+</a>

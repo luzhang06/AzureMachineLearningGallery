@@ -68,5 +68,5 @@ Build pipeline with newly created components and a manufacture sample dataset.
 | Microsoft | @Microsoft Open Source | Tutorials |recommendation| September 4, 2020 |
 
 <a href="https://trackgit.com">
-<img src="https://sfy.cx/u/oFu" alt="trackgit-views" />
-</a> views
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj17k179xhjh717s98hk" alt="trackgit-views" />
+</a>
