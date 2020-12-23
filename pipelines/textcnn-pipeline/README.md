@@ -41,10 +41,10 @@ Build pipeline with newly created components and AzureML built-in components.
 | [textcnn-score](.../components/textcnn/textcnn-score/score.yaml) | A module to score text classification model. |
 
 
-| Contributed by | Maintained by | Category | Tags | Last update | 
-|---|---|---|---|---|
-| Microsoft | @Microsoft Open Source | Tutorials |text-processing, text-classification, CNN| September 4, 2020 |
+| Contributed by | Tags | Last update | 
+|---|---|---|
+| Microsoft | text-processing, text-classification, CNN| September 4, 2020 |
 
 <a href="https://trackgit.com">
-<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj16b0uicksts53g2buk" alt="trackgit-views" />
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj17ly3wxdh8ey0ql9fk" alt="trackgit-views" />
 </a>

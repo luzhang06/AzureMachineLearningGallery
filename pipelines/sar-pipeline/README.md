@@ -49,10 +49,10 @@ Build pipeline with newly created components and AzureML sample dataset.
 | [Recall at K](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/recall_at_k.yaml)| Recall at K metric. |
 
 
-| Contributed by | Maintained by | Category | Tags | Last update | 
-|---|---|---|---|---|
-| Microsoft | @Microsoft Open Source | Tutorials |recommendation| September 4, 2020 |
+| Contributed by | Tags | Last update | 
+|---|---|---|
+| Microsoft | recommendation| December, 2020 |
 
 <a href="https://trackgit.com">
-<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj16b0uicksts53g2buk" alt="trackgit-views" />
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj17l9rpqyso4du9nmjk" alt="trackgit-views" />
 </a>
