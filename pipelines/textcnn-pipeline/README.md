@@ -46,5 +46,5 @@ Build pipeline with newly created components and AzureML built-in components.
 | Microsoft | @Microsoft Open Source | Tutorials |text-processing, text-classification, CNN| September 4, 2020 |
 
 <a href="https://trackgit.com">
-<img src="https://sfy.cx/u/oFu" alt="trackgit-views" />
-</a> views
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kj16b0uicksts53g2buk" alt="trackgit-views" />
+</a>
