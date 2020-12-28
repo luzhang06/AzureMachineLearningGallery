@@ -71,7 +71,7 @@ _Tips: In 'conda' settings, you could paste your conda setting directly or speci
 
 Here is a Yaml Spec template to elaborate all these settings as an example:
 
-```dotnetcli
+```yaml
 #  This is a template component spec yaml file.
 #  For more details, please refer to https://aka.ms/azure-ml-component-specs
 $schema: http://azureml/sdk-2-0/CommandComponent.json
@@ -207,7 +207,7 @@ Let's start creating our XGBRegressor component Yaml spec by following the steps
     Our XGBRegressor component should also be a CommandComponent and let's use the name 'microsoft.com.azureml.samples.XGBRegressor' for this component. To simplify on the UI, we could also give its 'display_name' as XGBRegressor. We'd like also add a 'Tutorial' tag to this component to help us understand the purpose of this component. 
 
     The Yaml content for this metadata defination would be:
-```dotnetcli
+```yaml
 $schema: http://azureml/sdk-2-0/CommandComponent.json
 name: microsoft.com.azureml.samples.XGBRegressor
 version: 0.0.1
@@ -220,14 +220,14 @@ tags:
 2. Interface.
 
   - For every data input in our XGBRegressor component, we need use 'DataFrameDirectory' as its type. Given our training/evaluation could not run with any missing of these data, we should set 'optional' to false. An example as below:
-```dotnetcli
+```yaml
 Training_Data_Features:
     type: DataFrameDirectory
     optional: false
 ```
 
   - For every parameter input in our XGBRegressor component, it is also suggested to give them an default value and description to help others understand the meanning when they initiate this component through Designer UI. An example as below:
-```dotnetcli
+```yaml
 Colsample_bytree:
     type: Float
     default: 0.3
@@ -236,7 +236,7 @@ Colsample_bytree:
 ```
 
   - Also define our XGBRegressor output as designed below:
-```dotnetcli
+```yaml
 outputs:
   Model_Path:
     type: path
@@ -247,7 +247,7 @@ outputs:
 3. Commandline.
 
     Considering the interface of our XGBRegressor component, include them into our command line when calling our component:
-```dotnetcli
+```yaml
 command: >-
   python XGBRegressor.py 
   --Training_Data_Features {inputs.Training_Data_Features} 
@@ -264,7 +264,7 @@ command: >-
 4. Envrionment.
 
     To draft envrionment of our XGBRegressor component, we could start from copy the template and enrich the dependencies for our needs. e.g. install xgboost under conda pip section. 
-```dotnetcli
+```yaml
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
@@ -291,7 +291,7 @@ environment:
 ```
 
 After following the 4 steps, we now have our full Yaml spec for XGBRegressor component as below:
-```dotnetcli
+```yaml
 #  This is a tutorial component spec yaml file for XGBRegressor.
 #  For more details, please refer to https://aka.ms/azure-ml-component-specs
 $schema: http://azureml/sdk-2-0/CommandComponent.json
