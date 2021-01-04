@@ -2,27 +2,20 @@
 # Licensed under the MIT License.
 
 $schema: http://azureml/sdk-2-0/CommandComponent.json
-name: microsoft.com.azureml.samples.cleanse_taxi_data
+name: microsoft.com.azureml.samples.normalize_taxi_data
 version: 0.0.1
-display_name: Cleanse Taxi Data
+display_name: Normalize Taxi Data
 type: CommandComponent
 tags: {}
 inputs:
-  raw_data:
-    type: AzureMLDataset
-    optional: false
-  useful_columns:
-    type: String
-    optional: false
-  columns:
-    type: String
+  filtered_data:
+    type: DataFrameDirectory
     optional: false
 outputs:
-  output_cleanse:
+  output_normalize:
     type: DataFrameDirectory
 command: >-
-  python cleanse.py --raw_data {inputs.raw_data} --useful_columns {inputs.useful_columns}
-  --columns {inputs.columns} --output_cleanse {outputs.output_cleanse}
+  python normalize.py --filtered_data {inputs.filtered_data} --output_normalize {outputs.output_normalize}
 environment:
   docker:
     image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
