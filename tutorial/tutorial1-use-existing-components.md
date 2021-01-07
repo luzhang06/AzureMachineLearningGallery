@@ -25,7 +25,7 @@ This tutorial will explain how to register component from the gallery with 3 sam
 
     > **! NOTE:**  
     >
-    > Please open designer before you do following steps if you never opened designer in your workspace before. This is to make sure the needed data type is registered to the workspace and then you can register components successfully to workspace.  
+    > Please open designer before you do following steps if you never opened designer in your workspace before. This is to make sure the needed data type is registered to the workspace and then you can registered components successfully to workspace.  
 
 1. Add **&flight=cm** at end of the URL of your workspace to enable components feature. You will see **Modules** tab under Assests blade on the left navigation area. 
 
