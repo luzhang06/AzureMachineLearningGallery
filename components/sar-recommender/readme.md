@@ -7,12 +7,12 @@ SAR recommends items that are most similar to the ones that the user already has
 ## Component spec
 
 SAR contains following components:
-- [Stratified Splitter](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/stratified_splitter.yaml): split dataset into training dataset and test dataset. - [SAR Training](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/sar_train.yaml): Train a simple algorithm recommender. 
-- [SAR Scoring](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/sar_score.yaml): using test dataset to score the trained recommender. 
-- [MAP](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/map.yaml): Mean Average Precision at K metric. 
-- [nDCG](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/ndcg.yaml): Normalized Discounted Cumulative Gain (nDCG) at K metric.
-- [Precision at K](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/precision_at_k.yaml): Precision at K metric.
-- [Recall at K](https://github.com/microsoft/recommenders/blob/staging/reco_utils/azureml/azureml_designer_modules/module_specs/recall_at_k.yaml): Recall at K metric.
+- [Stratified Splitter](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/stratified_splitter.yaml): split dataset into training dataset and test dataset. - [SAR Training](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/sar_train.yaml): Train a simple algorithm recommender. 
+- [SAR Scoring](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/sar_score.yaml): using test dataset to score the trained recommender. 
+- [MAP](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/map.yaml): Mean Average Precision at K metric. 
+- [nDCG](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/ndcg.yaml): Normalized Discounted Cumulative Gain (nDCG) at K metric.
+- [Precision at K](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/precision_at_k.yaml): Precision at K metric.
+- [Recall at K](https://github.com/microsoft/recommenders/blob/master/reco_utils/azureml/azureml_designer_modules/module_specs/recall_at_k.yaml): Recall at K metric.
 
 ## Create new component in your workspace
 
