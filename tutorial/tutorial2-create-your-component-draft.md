@@ -65,9 +65,11 @@ is_deterministic: false
 tags:
   Tutorial:
 ```
-[Note] Name is the unique identifier across all components. Currently, name only accept letters, numbers and '-._'.
+> [!Note] 
+> Name is the unique identifier across all components. Currently, name only accept letters, numbers and '-._'.
 
-[Note] Currently, Azure Machine Learning Component only support __CommandComponent__. The `schema` and `type` settings are fixed values right now to support CommandComponent.
+> [!Note] 
+> Currently, Azure Machine Learning Component only support __CommandComponent__. The `schema` and `type` settings are fixed values right now to support CommandComponent.
 
 #### Step 2 - Interface.
 Interface is the central place to define the inputs and outputs of a component. For our case, we need to define 2 kinds of input: data and model parameters, and 2 output: model file and evaluation result.
@@ -90,7 +92,8 @@ inputs:
 ## Other inputs 
 ## <…>  
 ```
-[Note] DataFrameDirectory is the common data interface when uses Azure Machine Learning datasets. This type could be easily transformed to Pandas DataFrame. It is suggested to use DataFrameDirectory as the data inputs/outputs when you define your components.
+> [Note] 
+> DataFrameDirectory is the common data interface when uses Azure Machine Learning datasets. This type could be easily transformed to Pandas DataFrame. It is suggested to use DataFrameDirectory as the data inputs/outputs when you define your components.
 
 When we consider the __parameter inputs__ for our XGBRegressor component, the variables which are used for initiating XGBRegressor should be the best parameter candidates as we may need different value for the further tuning. So, we'd like to define the following parameters for our component:
 - colsample_bytree. Subsample ratio of columns when constructing each tree.
@@ -115,9 +118,11 @@ inputs:
   ## <…>  
 ```
 
-[Note] When you use DataFrameDirectory or directory(e.g., path) as an input type, it will be shown as a linkable point (i.e., __port__) on the component box on the canvas. When you use basic type, like integer, float, string as an input type, it will be treated as __parameters__ of the component. All parameters could be set on the right panel when select one component. Please refer to [component spec definition](../component-spec-definition.md) for the type full list of __port__ and __parameters__.
+> [Note] 
+> When you use DataFrameDirectory or directory(e.g., path) as an input type, it will be shown as a linkable point (i.e., __port__) on the component box on the canvas. When you use basic type, like integer, float, string as an input type, it will be treated as __parameters__ of the component. All parameters could be set on the right panel when select one component. Please refer to [component spec definition](../component-spec-definition.md) for the type full list of __port__ and __parameters__.
 
-[Note] The `description` under each input will help the user to understanding the meaning of this input. When the user hovers the mouse on a port, or hovers on the question mark of a parameter on the right panel, the description is shown as a pop-up text.
+> [Note] 
+> The `description` under each input will help the user to understanding the meaning of this input. When the user hovers the mouse on a port, or hovers on the question mark of a parameter on the right panel, the description is shown as a pop-up text.
 
 ##### Outputs
 In xgboost SDK, we could output the trained model to a Json file for other usage like offline inference. We could define a path to store our model Json file as the model output. At the meanwhile, evaluation result is also important to judge the performance of a model. Currently, given Azure Machine Learning only support __port__ output, we need put our evaluation result to a single line of data with DataFrameDiretory format. The output Yaml is defined as below:
@@ -338,7 +343,8 @@ When the Yaml Spec and Py code are ready, we could follow the major register gui
 ![create-component-from-localfiles](./create-component-from-localfiles.PNG)
 
 
-[Note] It would be suggested to put these 2 files together in same folder. Else you need manage the relative path in your spec.
+> [Note] 
+> It would be suggested to put these 2 files together in same folder. Else you need manage the relative path in your spec.
 
 Then click 'Next' and 'Create' for finish the creation of XGBRegressor component. You will see the new component in both Component page and Designer authoring page.
 
