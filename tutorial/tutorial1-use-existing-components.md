@@ -38,16 +38,19 @@ This tutorial will explain how to register component from the gallery with 3 sam
 
 1. Follow the wizard to finish the creation. 
     
-    After creation, you will see the component both in component tab and Designer module palette on the left of authoring page. 
-    [TODO] update screenshot
-    ![registered-component](./media/module-tree.PNG)
+    After creation, you will see the component both in component asset page for management.
+
+    ![component-page](./media/component-page.png)
+   
 
 
 ## 2. Use registered component to build pipeline in designer
 
 Azure Machine Learning designer is the UI interface to build machine learning pipelines. It provides an easy drag-n-drop interface to build, test and manage your machine learning pipelines. 
 
-1. Open a new pipeline in the designer.
+1. Open a new pipeline in the designer. You can find the registered component Designer module palette.
+
+    ![registered-component](./media/module-tree.png)
 
 1. Drag **Automobile price data (Raw)** dataset to canvas. You can find it under **Sample datasets** in the module tree to the left of canvas. You can right click the dataset and click **Visualize** to preview the data.
 
@@ -56,7 +59,7 @@ Azure Machine Learning designer is the UI interface to build machine learning pi
     |Module|Parameter|
     |---|---|
     |**Select Columns in Dataset**| Click **Edit column**, and select Include **Column types** -> **Numeric**. This is because this XGBRegressor component can only process numeric features.
-    |**Clean Missing Data**| Click **Edit column**, and select Include **All columns**. This is to clean missing data in the dataset.
+    |**Clean Missing Data**| Click **Edit column**, and select Include **All columns**. This is to clean missing data in the dataset. </br> **Cleaning mode**: select *Remove entire row* to remove rows containing missing value.
     |**Split Data**| **Splitting mode** is by default set as *Split Rows*. You can set split fraction of rows.
     |**XGBRegressorTraining**| **Label_Col**: Input *price* - the label column name.</br> **Model_FileName**: Input the output model name, e.g.*xgb_modelfile.json*.</br> **Learning_rate**: Set the learning rate of XGBRegressor, by default 0.1. </br> **Max_depth**: Maximum tree depth for base learners, by default 5.
 
