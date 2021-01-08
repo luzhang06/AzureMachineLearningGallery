@@ -16,13 +16,19 @@ Build pipeline with newly created components and AzureML built-in components.
 
 ## Build the pipeline
 
-1. Register a text dataset as file dataset in your workspace. The dataset format should be like [IMDB Dataset of 50k Movie Reviews](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
+1. Register a text dataset as **Tabular** dataset in your workspace. 
+    
+    The dataset format should include a text column and a label column, like review column and sentiment column in [IMDB Dataset of 50k Movie Reviews](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews).
+    
+    | review      | sentiment  |
+    | --- |--- |    
+    | It's a great movie. | positive |
 
 1. Open Designer, and drag the dataset to canvas.
 
 1. Add **Split Data** to canvas, connect it to the dataset, and configure the parameters.
 
-1. Add **TextCNN Train Model** to canvas, input the **label_column_name** (the sentiment column), **true_label_value** and **text_column_name** (the column contains text).
+1. Add **TextCNN Train Model** to canvas, input the **label_column_name** (the label column), **true_label_value** and **text_column_name** (the text column).
 
 1. Add **TextCNN Word to Id** to canvas, input the **text_column_name**.
 
