@@ -39,7 +39,7 @@ This tutorial will explain how to register component from the gallery with 3 sam
 1. Follow the wizard to finish the creation. 
     
     After creation, you will see the component both in component tab and Designer module palette on the left of authoring page. 
-
+    [TODO] update screenshot
     ![registered-component](./media/module-tree.PNG)
 
 

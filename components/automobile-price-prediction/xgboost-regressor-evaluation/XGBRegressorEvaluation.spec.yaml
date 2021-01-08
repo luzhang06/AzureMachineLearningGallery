@@ -18,7 +18,7 @@ inputs:
     optional: false
     description: Lable column in the dataset.
   Model_Path:
-    type: path
+    type: AnyDirectory
     optional: false
     description: Path where contains model file.
   Model_FileName:
@@ -27,7 +27,7 @@ inputs:
     description: Name of the model file.
 outputs:
   Evaluation_Output:
-    type: path
+    type: AnyDirectory
 command: >-
   python XGBRegressorEvaluation.py 
   --Evaluation_Data {inputs.Evaluation_Data} --Lable_Col {inputs.Lable_Col} 
