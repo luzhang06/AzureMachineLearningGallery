@@ -11,11 +11,11 @@ tags:
   Model Training:
 inputs:
   train_data_file:
-    type: path
+    type: AnyDirectory
     description: Training data
     optional: false
   validation_data_file:
-    type: path
+    type: AnyDirectory
     description: Test data
     optional: false
   word_embedding_dim:
@@ -70,7 +70,7 @@ outputs:
     type: ModelDirectory
     description: Trained learner
   vocab:
-    type: path
+    type: AnyDirectory
     description: Vocab for predict the sentence
 command: >-
   python run.py --embed-dim {inputs.word_embedding_dim} --kernel-num {inputs.kernel_num}
