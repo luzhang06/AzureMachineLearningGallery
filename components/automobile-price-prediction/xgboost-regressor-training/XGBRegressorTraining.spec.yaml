@@ -32,7 +32,7 @@ inputs:
     description: Maximum tree depth for base learners.
 outputs:
   Model_Path:
-    type: path
+    type: AnyDirectory
 command: >-
   python XGBRegressorTraining.py --Training_Data {inputs.Training_Data} --Model_FileName {inputs.Model_FileName} 
   --Lable_Col {inputs.Lable_Col} --Learning_rate {inputs.Learning_rate}

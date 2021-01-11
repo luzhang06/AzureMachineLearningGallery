@@ -15,12 +15,12 @@ inputs:
     description: The trained model file
     optional: false
   predict_data:
-    type: path
+    type: AnyDirectory
     description: Predict data
     optional: false
 outputs:
   predict_result:
-    type: path
+    type: AnyDirectory
     description: Predict result
 command: >-
   python run.py --trained-model {inputs.trained_model} --predict-path {inputs.predict_data}
