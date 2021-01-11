@@ -62,7 +62,7 @@ To upgrade these pseudo code to fit XGBRegressorEvaluation defination, we need 2
 You could try to follow the [XGBRegressorTraining](../components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.py) py code for an example. We also prepared a finalizaed [__XGBRegressorEvaluation py code__](../components/automobile-price-prediction/xgboost-regressor-evaluation/XGBRegressorEvaluation.py) for your reference.
 
 ## Register component from local
-When the Yaml Spec and Py code are ready, you could either edit them from example or download them from this folder directly, we could follow the register guidance in [tutorial 1](./tutorial1-use-existing-components.md) to register our XGBRegressorEvaluation component through Azure Machine Learning Modules page. The only difference is that you need register the component from 'Local files' and choose the right path where contains the Yaml Spec and Py code:
+When the Yaml Spec and Py code are ready, you could either edit them from example or download them from [this folder](../components/automobile-price-prediction/xgboost-regressor-evaluation/) directly, we could follow the register guidance in [tutorial 1](./tutorial1-use-existing-components.md) to register our XGBRegressorEvaluation component through Azure Machine Learning Modules page. The only difference is that you need register the component from 'Local files' and choose the right path where contains the Yaml Spec and Py code:
 
 ![create-component-from-localfiles](./img/create-component-from-localfiles.PNG)
 
@@ -82,7 +82,7 @@ Drag this component to the canvas and link it to precedent components and define
  - Put __'price'__ as the value of __'Lable_Col'__.
  - Put __'xgb_modelfile.json'__ as the value of __'Model_FileName'__. 
 
-![component-description](./img/component-tutorial2-pipeline.PNG)
+![component-description](./img/component-tutorial2-pipeline.png)
 
 At last we could submit the new pipeline with new component to evaluate our model performance.
 
