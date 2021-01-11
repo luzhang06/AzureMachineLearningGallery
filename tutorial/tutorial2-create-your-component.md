@@ -8,7 +8,7 @@ In general, Azure Machine Learning component is constituted by 2 files:
 1. Component specification in Yaml format. [__XGBRegressorTraining__](../components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.spec.yaml) is the Yaml file for our example . This file defines the component from several parts:
     - Metadata. e.g. __name, display_name, type, tags__.
     - Interface. __Inputs__ and __outputs__ of the component.
-    - Implementation. For CommandComponent, __Command__ is the 1-line command line which will be executed.
+    - Implementation. For CommandComponent, __Command__ is the 1-line command which will be executed.
     - Environment. __environment__ section defines the docker image and other dependencies.
 2. Relative Python code which includes your own logic. [__XGBRegressorTraining__](../components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.py) is the python file for our example.
 
@@ -28,7 +28,8 @@ Useful tips about the Yaml spec:
 > - Port & Parameters between UI and Yaml Spec.
 > From component UI, there has 2 types of inputs/outputs: __Ports__ and __Parameters__.
 > ![create-component](./img/ports-vs-parameters.PNG)
-> When you use _DataFrameDirectory_ or _AnyDirectory_ as an input/output type, it will be shown as __port__. When you use basic type, like _integer_, _float_ or _string_, it will be shown in __parameters__ right panel. 
+> 
+>   When you use _DataFrameDirectory_ or _AnyDirectory_ as an input/output type, it will be shown as __port__. When you use basic type, like _integer_, _float_ or _string_, it will be shown in __parameters__ right panel. 
 
 You could refer to '_[component spec definition](../component-spec-definition.md)_' for more details about the Yaml Spec settings and examples.
 
@@ -56,8 +57,8 @@ print("RMSE: %f" % (rmse))
 ```
 
 To upgrade these pseudo code to fit XGBRegressorEvaluation defination, we need 2 steps: 
-1. Parse the inputs from args.
-2. Prepare your data for prediction and evaluation.
+1. Parse the inputs from args. Generally, use 'argparse.ArgumentParser' and 'add_argument' to get all input values from command.
+2. Prepare your data for prediction and evaluation. Leverage 'load_data_frame_from_directory' to convert input 'DataFrameDirectory' data to Pandas DataFrame.
 
 You could try to follow the [XGBRegressorTraining](../components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.py) py code for an example. We also prepared a finalizaed [__XGBRegressorEvaluation py code__](../components/automobile-price-prediction/xgboost-regressor-evaluation/XGBRegressorEvaluation.py) for your reference.
 
@@ -66,7 +67,7 @@ When the Yaml Spec and Py code are ready, you could either edit them from exampl
 
 ![create-component-from-localfiles](./img/create-component-from-localfiles.PNG)
 
-Then click 'Next' and 'Create' for finish the creation of XGBRegressorEvaluation component. You will see the new component is listed in Module page.
+Then click 'Next' and 'Create' for finish the creation of XGBRegressorEvaluation component. You will see the new component is listed in Modules page.
 
 ![component-description](./img/component-description.PNG)
 
@@ -80,7 +81,7 @@ Drag this component to the canvas and link it to precedent components and define
  - The second output of __'Split Data'__ component is the data input as evaluation data set.
  - __'XGBRegressorTraining'__ output the model directory. This is the input model directory for XGBRegressorEvaluation component.
  - Put __'price'__ as the value of __'Lable_Col'__.
- - Put __'xgb_modelfile.json'__ as the value of __'Model_FileName'__. 
+ - Put __'xgb_modelfile.json'__ as the value of __'Model_FileName'__. This should be aligned with XGBRegressorTraining model file defination.
 
 ![component-description](./img/component-tutorial2-pipeline.png)
 
