@@ -29,7 +29,7 @@ This tutorial will explain how to register component from the gallery with a sam
 
 1. Add **&flight=cm** at end of the URL of your workspace to enable components feature. You will see **Modules** tab under Assests blade on the left navigation area. 
 
-    ![create-component](./media/aml-studio-flight.PNG)
+    ![create-component](./img/aml-studio-flight.png)
     
 1. Click *Create -> From YAML file*. Choose Github repo as source. Fill in the URL of cleanse component YAML spec file (https://github.com/Azure/AzureMachineLearningGallery/blob/main/components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.spec.yaml).
 
@@ -37,14 +37,14 @@ This tutorial will explain how to register component from the gallery with a sam
     >
     > If you have created components in your workspace before, click *New Module -> From YAML file* to create a new component.
 
-    ![create-component](./media/create-component.PNG)
+    ![create-component](./img/create-component.png)
     
 
 1. Follow the wizard to finish the creation. 
     
     After creation, you will see the component both in component asset page for management.
 
-    ![component-page](./media/component-page.png)
+    ![component-page](./img/component-page.png)
    
 
 
@@ -52,9 +52,9 @@ This tutorial will explain how to register component from the gallery with a sam
 
 Azure Machine Learning designer is the UI interface to build machine learning pipelines. It provides an easy drag-n-drop interface to build, test and manage your machine learning pipelines.
 
-1. Open a new pipeline in the designer. You can find the registered component in Designer module palette.
+1. Open a new pipeline in the designer. You can find the registered component under **Custom Module** category in Designer module palette.
 
-    ![registered-component](./media/module-tree.png)
+    ![registered-component](./img/module-tree.png)
 
 1. Find **Automobile price data (Raw)** dataset under **Sample datasets** in the module tree to the left of canvas and drag it to canvas. Then you can right click the dataset and click **Visualize** to preview the data.
 
@@ -64,13 +64,13 @@ Azure Machine Learning designer is the UI interface to build machine learning pi
     |---|---|
     |**Select Columns in Dataset**| Click **Edit column**, and select Include **Column types** -> **Numeric**. This is because this XGBRegressor component can only process numeric features.
     |**Clean Missing Data**| Click **Edit column**, and select Include **All columns**. This is to clean missing data in the dataset. </br> **Cleaning mode**: select *Remove entire row* to remove rows containing missing value.
-    |**Split Data**| **Splitting mode** is by default set as *Split Rows*. You can set split fraction of the input data.
-    |**XGBRegressorTraining**| **Label_Col**: Input *price* - the label column name.</br> **Model_FileName**: Input the output model name, e.g.*xgb_modelfile.json*.</br> **Learning_rate**: Set the learning rate of XGBRegressor, by default 0.1. </br> **Max_depth**: Maximum tree depth for base learners, by default 5.
+    |**Split Data**| **Splitting mode** is by default set as *Split Rows*. </br> **Fraction of rows in the first output dataset**: You can set split fraction of the input data.
+    |**XGBRegressorTraining**| **Label_Col**: Input *price* - the label column name.</br> **Model_FileName**: Input the output model name, e.g.`xgb_modelfile.json`.</br> **Learning_rate**: Set the learning rate of XGBRegressor, by default 0.1. </br> **Max_depth**: Maximum tree depth for base learners, by default 5.
 
 
 1. Connect them to build the pipeline like following graph. 
 
-    ![tutorial1-pipeline](./media/tutorial1-pipeline.PNG)
+    ![tutorial1-pipeline](./img/tutorial1-pipeline.png)
 
 1. Submit a run.
     
