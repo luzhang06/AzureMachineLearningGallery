@@ -1,0 +1,47 @@
+#  This is component yaml spec template file.
+#  Please replace all '< ... >' to define your own component.
+#  For more details, please refer to https://aka.ms/azure-ml-component-specs
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: < Put your unique component Name here >
+version: 0.0.1
+display_name: < Put your component Display name here. Display Name is the short Name on component UI>
+type: CommandComponent
+is_deterministic: false
+tags:
+  < [optional] Add your Tag Name here> : < [optional] Add your Tag Value here>
+inputs:
+  < Your 1st Input name >:
+    type: < DataFrameDirectory or AnyDirectory or Basic tpyes >
+    optional: < true or false >
+    description: < Edite description for your input >
+  < Your 2nd Input name >:
+    type: < DataFrameDirectory or AnyDirectory or Basic tpyes >
+    optional: < true or false >
+    description: < Edite description for your input >
+outputs:
+  < Your 1st Ouput name >:
+    type: < DataFrameDirectory or AnyDirectory >
+    description: < Edite description for your input >
+command: >-
+  python < Your python file name >.py 
+  --< Your 1st Input name > {inputs.< Your 1st Input name >} --< Your 2nd Input name > {inputs.< Your 2nd Input name >} 
+  --< Your 1st Ouput name > {outputs.< Your 1st Ouput name >} 
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.0
+      - pip:
+        - azureml-sdk==0.1.0.*
+        - azureml-designer-core==0.0.31
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+        - < Specify your extra dependencies >
+  os: Linux
