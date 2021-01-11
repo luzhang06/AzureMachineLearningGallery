@@ -2,11 +2,11 @@
 
 A component is self-contained set of code that performs one step in machine learning pipeline, such as data preprocessing, model training, model scoring and so on. A component is analogous to a function, in that it has a name, parameters, expects certain input and returns some value. Any python script can be wrapped as a component following the [component spec](component-spec-definition.md).
 
-Azure Machine Learning Gallery contains rich components and pipelines for common machine learning tasks. It accelerates the productivity by enabling customer easily leveraging best work of the community instead of start from zero. 
+Azure Machine Learning Gallery contains rich components and pipelines for common machine learning tasks. It accelerates the productivity by enabling customer to easily leverage best work of the community instead of starting from zero.
 
 In this tutorial you will learn how to build a machine learning pipeline with existing components in the gallery. It can be summarized as two steps:
- 1. Register the components to your Azure Machine Learning workspace.
- 2. Build the pipeline using the registered components in Azure Machine Learning designer.
+ 1. Register the component to your Azure Machine Learning workspace.
+ 2. Build a pipeline using the registered component in Azure Machine Learning designer.
 
 > **! NOTE:**  
 >
@@ -15,23 +15,27 @@ In this tutorial you will learn how to build a machine learning pipeline with ex
 This tutorial will use Automobile Price Prediction as an example. The related components can be found under components/automobile-price-prediction.
 
 
-## 1. Register existing components from gallery
+## 1. Register existing components from gallery to AML workspace
 
 To use components from this gallery and build a pipeline, you need to register components to your Azure Machine Learning workspace at first.
 
-This tutorial will explain how to register component from the gallery with 3 sample components (cleanse, merge, filter) under folder components/nyc-taxi-fare-prediction.
+This tutorial will explain how to register component from the gallery with a sample component - XGBRegressorTraining under folder [components/automobile-price-prediction](../components/automobile-price-prediction).
 
 1. Go to ml.azure.com and select your workspace.
 
     > **! NOTE:**  
     >
-    > Please open designer before you do following steps if you never opened designer in your workspace before. This is to make sure the needed data type is registered to the workspace and then you can registered components successfully to workspace.  
+    > Please open designer before you do following steps if you never opened designer in your workspace before. This is to make sure the needed data type is registered to the workspace so that you can register components successfully to workspace.  
 
 1. Add **&flight=cm** at end of the URL of your workspace to enable components feature. You will see **Modules** tab under Assests blade on the left navigation area. 
 
     ![create-component](./media/aml-studio-flight.PNG)
     
-1. Click *Create new component -> From YAML file*. Choose Github repo as source. Fill in the URL of cleanse component YAML spec file (https://github.com/Azure/AzureMachineLearningGallery/blob/main/components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.spec.yaml).
+1. Click *Create -> From YAML file*. Choose Github repo as source. Fill in the URL of cleanse component YAML spec file (https://github.com/Azure/AzureMachineLearningGallery/blob/main/components/automobile-price-prediction/xgboost-regressor-training/XGBRegressorTraining.spec.yaml).
+
+    > **! NOTE:**  
+    >
+    > If you have created components in your workspace before, click *New Module -> From YAML file* to create a new component.
 
     ![create-component](./media/create-component.PNG)
     
@@ -46,13 +50,13 @@ This tutorial will explain how to register component from the gallery with 3 sam
 
 ## 2. Use registered component to build pipeline in designer
 
-Azure Machine Learning designer is the UI interface to build machine learning pipelines. It provides an easy drag-n-drop interface to build, test and manage your machine learning pipelines. 
+Azure Machine Learning designer is the UI interface to build machine learning pipelines. It provides an easy drag-n-drop interface to build, test and manage your machine learning pipelines.
 
-1. Open a new pipeline in the designer. You can find the registered component Designer module palette.
+1. Open a new pipeline in the designer. You can find the registered component in Designer module palette.
 
     ![registered-component](./media/module-tree.png)
 
-1. Drag **Automobile price data (Raw)** dataset to canvas. You can find it under **Sample datasets** in the module tree to the left of canvas. You can right click the dataset and click **Visualize** to preview the data.
+1. Find **Automobile price data (Raw)** dataset under **Sample datasets** in the module tree to the left of canvas and drag it to canvas. Then you can right click the dataset and click **Visualize** to preview the data.
 
 1. Drag the following components to canvas and config parameters in right panel of each module as following:
 
@@ -60,7 +64,7 @@ Azure Machine Learning designer is the UI interface to build machine learning pi
     |---|---|
     |**Select Columns in Dataset**| Click **Edit column**, and select Include **Column types** -> **Numeric**. This is because this XGBRegressor component can only process numeric features.
     |**Clean Missing Data**| Click **Edit column**, and select Include **All columns**. This is to clean missing data in the dataset. </br> **Cleaning mode**: select *Remove entire row* to remove rows containing missing value.
-    |**Split Data**| **Splitting mode** is by default set as *Split Rows*. You can set split fraction of rows.
+    |**Split Data**| **Splitting mode** is by default set as *Split Rows*. You can set split fraction of the input data.
     |**XGBRegressorTraining**| **Label_Col**: Input *price* - the label column name.</br> **Model_FileName**: Input the output model name, e.g.*xgb_modelfile.json*.</br> **Learning_rate**: Set the learning rate of XGBRegressor, by default 0.1. </br> **Max_depth**: Maximum tree depth for base learners, by default 5.
 
 
