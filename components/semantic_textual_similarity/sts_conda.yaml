@@ -3,10 +3,11 @@ channels:
 - defaults
 dependencies:
 - python=3.7
+- pip = 20.2
 - pip:
   - PyYAML
-  - azureml-designer-core==0.0.50
-  - azureml-defaults==1.18.0
+  - azureml-designer-core==0.0.54
+  - azureml-defaults
   - pyarrow
   - sentence-transformers==0.3.9
   - scikit-learn==0.22.2.post1
