@@ -11,11 +11,11 @@ tags:
   Data Transformation:
 inputs:
   input_vocab:
-    type: path
+    type: AnyDirectory
     description: The vocabulary file
     optional: false
   input_text:
-    type: path
+    type: AnyDirectory
     description: Input text
     optional: false
   text_column_name:
@@ -24,7 +24,7 @@ inputs:
     optional: false
 outputs:
   processed_data:
-    type: path
+    type: AnyDirectory
     description: Processed data
 command: >-
   python run.py --input-vocab {inputs.input_vocab} --input-data {inputs.input_text}

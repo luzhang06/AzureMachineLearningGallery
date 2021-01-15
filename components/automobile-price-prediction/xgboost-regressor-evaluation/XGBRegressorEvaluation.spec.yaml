@@ -1,0 +1,58 @@
+#  This is a tutorial component spec yaml file for XGBRegressor.
+#  For more details, please refer to https://aka.ms/azure-ml-component-specs
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: microsoft.com.azureml.samples.XGBRegressorEvaluation
+version: 0.0.1
+display_name: XGBRegressorEvaluation
+type: CommandComponent
+is_deterministic: false
+tags:
+  Tutorial:
+inputs:
+  Evaluation_Data:
+    type: DataFrameDirectory
+    optional: false
+    description: Evaluation dataset.
+  Lable_Col:
+    type: String
+    optional: false
+    description: Lable column in the dataset.
+  Model_Path:
+    type: AnyDirectory
+    optional: false
+    description: Path where contains model file.
+  Model_FileName:
+    type: String
+    optional: false
+    description: Name of the model file.
+outputs:
+  Evaluation_Output:
+    type: AnyDirectory
+command: >-
+  python XGBRegressorEvaluation.py 
+  --Evaluation_Data {inputs.Evaluation_Data} --Lable_Col {inputs.Lable_Col} 
+  --Model_Path {inputs.Model_Path} --Model_FileName {inputs.Model_FileName}
+  --Evaluation_Output {outputs.Evaluation_Output} 
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==0.1.0.*
+        - azureml-designer-core==0.0.54
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+        - pyarrow
+        - pandas
+        - scikit-learn
+        - numpy
+        - xgboost
+  os: Linux
