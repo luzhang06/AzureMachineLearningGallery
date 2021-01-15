@@ -37,20 +37,20 @@ Existing candidates:
 
 * [AutoML component](https://feedback.azure.com/forums/257792-machine-learning/suggestions/42115291-make-automl-a-module-in-the-designer)
 
-## Quick Links
+## Quick links
 * [Pipelines](/pipelines/README.md) - highlights of end to end machine learning workflows in multipe domains like text analytics, computer vision, recommendation, etc.
 * [Components](/components/README.md) - a catalog of components which can be reused in different pipelines
 
 
-## Tutorial
+## Tutorials
 - [Tutorial 1: Use existing component from gallery](./tutorial/tutorial1-use-existing-components.md)
 - [Toturial 2: Create your own component](./tutorial/tutorial2-create-your-component.md)
  
 
-## Get Involved
+## Get involved
 Please email us: azuremldesigner@microsoft.com
 
-## Help & Support
+## Help & support
 
 This project uses GitHub Issues to track bugs and feature requests. 
 
