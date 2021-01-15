@@ -54,8 +54,7 @@ Please email us: azuremldesigner@microsoft.com
 
 This project uses GitHub Issues to track bugs and feature requests. 
 
-Please refer to [FAQ](FAQ.md) for frequently asked questions or search the existing issues before filing new issues to avoid duplicates.  
-For new issues, file your bug or feature request as a new issue. 
+Please refer to [FAQ](FAQ.md) for frequently asked questions or search the existing issues before filing new issues.
 
 Following information are useful for debugging:
 - Pipeline run URL
