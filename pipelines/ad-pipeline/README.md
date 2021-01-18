@@ -2,9 +2,7 @@
 
 ## Overview
 
-This sample pipeline contains some components that implement with spectral residual anomaly detection. This algorithm can be used in Time Series anomaly detection.
-
-This pipeline build a time-series anomaly detection model which can help customers monitor time-series and detect incidents.
+This pipeline builds a time-series anomaly detection model which can help customers monitor time-series and detect incidents with [spectral residual anomaly detection component](https://github.com/microsoft/anomalydetector/blob/master/aml_component/ad_component.yaml).
 
 #### You will learn how to:
 
@@ -12,7 +10,7 @@ Build pipeline with newly created components and a manufacture sample dataset.
 
 ## Prerequisites
 
-[Create related components in your workspace](.../tutorial/tutorial1-use-existing-components.md).
+[Create related components in your workspace](../../tutorial/tutorial1-use-existing-components.md). Component spec can be found [here](https://github.com/microsoft/anomalydetector/blob/master/aml_component/ad_component.yaml).
 
 ## Build the pipeline
 
@@ -48,11 +46,12 @@ Build pipeline with newly created components and a manufacture sample dataset.
 
     The output including following columns according to the `detect_mode` parameter.
     
-    In AnomalyOnly mode, the following columns will be output:
+    In _AnomalyOnly_ mode, the following columns will be output:
     * `isAnomaly`. The anomaly result.
     * `mag`. The magnitude after spectral residual transformation.
     * `score`. A value indicates the significance of the anomaly.
-    In AnomalyAndMargin mode, the following columns will be output in addition the the above three columns.
+    
+    In _AnomalyAndMargin_ mode, the following columns will be output in addition the the above three columns.
     * `expectedValue`. The expected value of each point.
     * `lowerBoundary`. The lower boundary at each point that the algorithm can tolerant as not anomaly.
     * `upperBoundary`. The upper boundary at each point that the algorithm can tolerant as not anomaly.
